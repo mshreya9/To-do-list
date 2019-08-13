@@ -1,0 +1,37 @@
+.login-page{
+    text-align:center;
+    
+}
+input[type=text], select {
+    width: 100%;
+    padding: 10px 20px;
+    color:black;
+    display: inline-block;
+    font-size:20px;
+    border-color:black;
+    text-decoration:none;
+    border-radius:3px;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+input[type=text]:hover{
+    background-color: gray;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 10px 20px;
+    color:black;
+    display: inline-block;
+    font-size:20px;
+    border-color:black;
+    text-decoration:none;
+    border-radius:3px;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+input[type=password]:hover{
+    background-color: gray;
+}
+.login-button{
+    margin-top:20px;
+}
