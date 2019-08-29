@@ -19,4 +19,4 @@ Some of the functions of this project:
  
  ### Backend
  
- Backend is maintained by [Nikhil Singh]https://github.com/nikhils4.
+ Backend is maintained by @nikhils4.
