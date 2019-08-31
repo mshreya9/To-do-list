@@ -1,0 +1,51 @@
+#navbar-item{
+    padding-left:30px;
+    padding-top:20px;
+    font-family:'Barlow', sans-serif;
+    font-size:18px;
+}
+#navbar-item-1{
+    margin-left:800px;
+}
+#shadow{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+}
+#main {
+    height:auto;
+    padding-left:50px;
+    padding-right:50px;
+    padding-top:200px;
+    display:inline-block;
+}
+.page-title{
+    font-family: 'Barlow', sans-serif;
+    font-weight:bold;
+}
+.page-head{
+    padding-top:10px;
+    font-family: 'Barlow', sans-serif;
+    font-weight:bolder;
+    font-size:30px;
+}
+.page-text{
+    padding-top:10px;
+    font-family: 'Barlow', sans-serif;
+    font-size:20px;
+}
+textarea{
+    resize:none;
+    outline:none;
+}
+.text-input{
+    text-align:center;
+    margin-top:50px;
+    width:100%;
+    font-family: 'Barlow', sans-serif;
+    font-size:20px;
+}
+.input-box{
+    border:2px solid lightblue;
+    margin-top:50px;
+    height:auto;
+    width:100%;
+}

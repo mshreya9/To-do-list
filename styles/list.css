@@ -1,5 +1,8 @@
 .login-page{
     text-align:center;
+    margin-top:100px;
+    font-family:'Barlow', sans-serif;
+    font-weight:bolder;
 }
 input:focus,
 select:focus,
@@ -7,9 +10,9 @@ textarea:focus,
 button:focus {
     outline: none;
 }
-input[type=text], select {
+input[type=text]{
     width: 100%;
-    padding: 10px 20px;
+    padding: 5px 20px;
     margin-top:50px;
     color:black;
     display: inline-block;
@@ -21,12 +24,13 @@ input[type=text], select {
     box-sizing: border-box;
     cursor:pointer;
 }
-input[type=text]:hover{
+input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
-input[type=password], select {
+input[type=password]{
     width: 100%;
-    padding: 10px 20px;
+    padding: 5px 20px;
+    margin-top:30px;
     color:black;
     display: inline-block;
     font-size:20px;
@@ -36,19 +40,30 @@ input[type=password], select {
     border:2px solid lightblue;
     box-sizing: border-box;
     cursor:pointer;
-}
-input[type=password]:hover{
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
 .login-button{
     margin-top:50px;
+    margin-bottom:80px;
     width:100%;
     color:black;
-    padding:10px 20px;
+    padding:5px 20px;
     border-radius:50px;
     border:2px solid;
     background-color: white;
     height:65px;
     font-size:20px;
 }
-
+input[type=email]{
+    width: 100%;
+    padding: 10px 20px;
+    margin-top:30px;
+    color:black;
+    display: inline-block;
+    font-size:20px;
+    height:65px;
+    text-decoration:none;
+    border-radius:50px;
+    border:2px solid lightblue;
+    box-sizing: border-box;
+    cursor:pointer;
+}
