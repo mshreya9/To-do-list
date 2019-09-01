@@ -11,7 +11,7 @@ button:focus {
     outline: none;
 }
 input[type=text]{
-    width: 100%;
+    width: 80%;
     padding: 5px 20px;
     margin-top:50px;
     color:black;
@@ -28,7 +28,7 @@ input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
 input[type=password]{
-    width: 100%;
+    width: 80%;
     padding: 5px 20px;
     margin-top:30px;
     color:black;
@@ -44,7 +44,7 @@ input[type=password]{
 .login-button{
     margin-top:50px;
     margin-bottom:80px;
-    width:100%;
+    width:80%;
     color:black;
     padding:5px 20px;
     border-radius:50px;
@@ -53,8 +53,12 @@ input[type=password]{
     height:65px;
     font-size:20px;
 }
+.signup-image{
+    border:2px solid red;
+    top:0;
+}
 input[type=email]{
-    width: 100%;
+    width: 80%;
     padding: 10px 20px;
     margin-top:30px;
     color:black;

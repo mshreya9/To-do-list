@@ -51,6 +51,7 @@ textarea{
     height:auto;
     width:100%;
     border-radius:20px;
+    padding:0px 20px;
 }
 .organizer-image{
     width:100%;
