@@ -53,10 +53,7 @@ input[type=password]{
     height:65px;
     font-size:20px;
 }
-.signup-image{
-    border:2px solid red;
-    top:0;
-}
+
 input[type=email]{
     width: 80%;
     padding: 10px 20px;
