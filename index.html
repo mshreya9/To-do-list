@@ -1,15 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/list.css">
+    <link rel="stylesheet" href="./styles/home-page.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home page</title>
 </head>
 
 <body>
@@ -21,12 +20,32 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <img src="./assets/navbar-logo.png" style="width:50px; height:50px;">
-                </li>
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="about-us">About Us</a>
+                    <a class="nav-link" href="#" id="navbar-item">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbar-item">Profile</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbar-item">Stats</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="navbar-item">Shared Lists</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <img src="./assets/useravatar.png" id="navbar-item-1" href="#" style="width:70px; height:40px;">
+                </li>
+                <li class="nav-item active" id="navbar-item-1">
+                    SHREYA
+                </li>
+                <li class="nav-item active" id="navbar-item-1">
+                    <div style="height:15px; width:15px; border:2px solid black; transform:rotate(135deg); border-bottom-color:white; border-left-color:white;"></div>
                 </li>
             </ul>
         </div>
@@ -34,22 +53,14 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-6">
-                <div class="login-page">
-                    <h1>Login</h1>
-                    <div>
-                        <input id="email" placeholder="Email" type="email" name="emailaddress">
-                    </div>
-                    <div>
-                        <input id="passwd" placeholder="Password" type="password">
-                    </div>
-                    <div>
-                        <input type="submit" class="login-button" value="Login">
-                    </div>
+            <div class="col-12 col-lg-6" style="padding:0vw 5vw">
+                <div class="text-input">
+                    <h1>Jot Down</h1>
                 </div>
+                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"></textarea>
             </div>
-            <div class="col-12 col-lg-6"
-                style="background: url('./assets/login-image.PNG') center center; background-image: contain; margin-top:50px; background-size:cover;">
+            <div class="col-12 col-lg-6">
+                <img src="./assets/to-do-list.png" class="organizer-image">
             </div>
         </div>
     </div>
