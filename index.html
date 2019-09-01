@@ -13,11 +13,29 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <img src="./assets/navbar-logo.png" style="width:50px; height:50px;">
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="about-us">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container-fluid">
         <div class="row">
-            
             <div class="col-12 col-lg-6">
-                <div class="login-page">    
+                <div class="login-page">
                     <h1>Login</h1>
                     <div>
                         <input id="email" placeholder="Email" type="email" name="emailaddress">
@@ -30,7 +48,9 @@
                     </div>
                 </div>
             </div>
-           
+            <div class="col-12 col-lg-6"
+                style="background: url('./assets/login-image.PNG') center center; background-image: contain; margin-top:50px; background-size:cover;">
+            </div>
         </div>
     </div>
 

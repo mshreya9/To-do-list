@@ -10,16 +10,24 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+#shadow{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+}
+#about-us{
+    padding-left:10px;
+    font-family:'Barlow', sans-serif;
+    font-size:20px;
+}
 input[type=text]{
-    width: 80%;
+    width:60%;
     padding: 5px 20px;
     margin-top:50px;
     color:black;
     display: inline-block;
     font-size:20px;
-    height:65px;
+    height:55px;
     text-decoration:none;
-    border-radius:50px;
+    border-radius:40px;
     border:2px solid lightblue;
     box-sizing: border-box;
     cursor:pointer;
@@ -28,15 +36,15 @@ input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
 input[type=password]{
-    width: 80%;
+    width: 60%;
     padding: 5px 20px;
     margin-top:30px;
     color:black;
     display: inline-block;
     font-size:20px;
-    height:65px;
+    height:55px;
     text-decoration:none;
-    border-radius:50px;
+    border-radius:40px;
     border:2px solid lightblue;
     box-sizing: border-box;
     cursor:pointer;
@@ -44,25 +52,25 @@ input[type=password]{
 .login-button{
     margin-top:50px;
     margin-bottom:80px;
-    width:80%;
+    width:60%;
     color:black;
     padding:5px 20px;
-    border-radius:50px;
+    border-radius:40px;
     border:2px solid;
     background-color: white;
-    height:65px;
+    height:55px;
     font-size:20px;
 }
 input[type=email]{
-    width: 80%;
+    width: 60%;
     padding: 10px 20px;
     margin-top:30px;
     color:black;
     display: inline-block;
     font-size:20px;
-    height:65px;
+    height:55px;
     text-decoration:none;
-    border-radius:50px;
+    border-radius:40px;
     border:2px solid lightblue;
     box-sizing: border-box;
     cursor:pointer;
