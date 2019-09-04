@@ -80,6 +80,67 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+    <script>
+
+        window.onload = function () {
+
+            document.getElementsByClassName("login-button")[0].addEventListener('click', function (event) {
+
+                // pick values
+                let username = document.getElementById("email");
+                let password = document.getElementById("passwd");
+
+                // validation
+                let status = [];
+
+                console.log("Hello")
+
+
+                if (username.value.trim().length == 0) {
+                    status.push("false");
+                    username.style.borderColor = "red";
+                    username.placeholder = "Please eneter valid input"
+
+                } else {
+                    username.style.borderColor = "green";
+                    status.push("true");
+                }
+
+                if (password.value.trim().length <= 6) {
+                    status.push("false");
+                    password.style.borderColor = "red";
+                    password.placeholder = "Please eneter valid input"
+                } else {
+                    password.style.borderColor = "green";
+                    status.push("true");
+                }
+
+                if (status.includes("false")) {
+                    return false
+                } else {
+                    // XHR 
+                    var xhttp = new XMLHttpRequest();
+
+                    let data = {
+                        email: username.value,
+                        password: password.value
+                    }
+                    xhttp.open("POST", "http://localhost:3000/auth/login", true);
+                    xhttp.setRequestHeader("Content-type", "application/json");
+                    xhttp.send(JSON.stringify(data));
+                    xhttp.onreadystatechange = function (res) {
+                        if (this.readyState == 4 && this.status == 200) {
+                           console.log(res)
+                        }
+                    };
+                }
+
+
+            })
+        }
+    </script>
 </body>
 
 </html>
