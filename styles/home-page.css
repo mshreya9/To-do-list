@@ -7,18 +7,10 @@
 #shadow{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 }
-/* #main {
-    height:auto;
-    padding-left:50px;
-    padding-right:50px;
-    padding-top:200px;
-    display:inline-block;
-} */
 #navbar-item-1{
     padding-right:30px;
     font-family:'Barlow', sans-serif;
     font-size:20px;
-    vertical-align: middle;
 }
 .page-title{
     font-family: 'Barlow', sans-serif;
