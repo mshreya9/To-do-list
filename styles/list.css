@@ -1,8 +1,10 @@
+body {
+    font-family:'Barlow', sans-serif;
+
+}
 .login-page{
     text-align:center;
-    margin-top:100px;
-    font-family:'Barlow', sans-serif;
-    font-weight:bolder;
+    margin-top:50px;
 }
 input:focus,
 select:focus,
@@ -10,15 +12,20 @@ textarea:focus,
 button:focus {
     outline: none;
 }
-#shadow{
+.bg-white {
     box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 }
-#about-us{
-    padding-left:10px;
-    font-family:'Barlow', sans-serif;
-    font-size:20px;
+.nav-item {
+    padding-left : 10px;
+    padding-right : 10px
 }
-input[type=text]{
+.nav-link {
+    font-size : 18px
+}
+.navbar-brand {
+    font-size: 22px
+}
+input{
     width:60%;
     padding: 5px 20px;
     margin-top:50px;
@@ -35,43 +42,55 @@ input[type=text]{
 input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
-input[type=password]{
-    width: 60%;
-    padding: 5px 20px;
-    margin-top:30px;
+.login-button, .create-acc-btn{
+    width:auto;
     color:black;
-    display: inline-block;
-    font-size:20px;
-    height:55px;
-    text-decoration:none;
-    border-radius:40px;
-    border:2px solid lightblue;
-    box-sizing: border-box;
-    cursor:pointer;
-}
-.login-button{
-    margin-top:50px;
-    margin-bottom:80px;
-    width:60%;
-    color:black;
-    padding:5px 20px;
+    padding:5px 50px;
     border-radius:40px;
     border:2px solid;
     background-color: white;
-    height:55px;
     font-size:20px;
 }
-input[type=email]{
-    width: 60%;
-    padding: 10px 20px;
-    margin-top:30px;
+
+.create-acc-btn{
+    margin-top:50px;
+    margin-bottom:80px;
+    color:white;
+    padding:5px 30px;
+    border:2px solid #0a0a4d;
+    background-color: #0a0a4d;
+}
+.create-acc-btn:hover{
     color:black;
-    display: inline-block;
-    font-size:20px;
-    height:55px;
-    text-decoration:none;
-    border-radius:40px;
-    border:2px solid lightblue;
-    box-sizing: border-box;
-    cursor:pointer;
+    background-color: white;
+    transition: 0.5s;
+}
+.login-button:hover{
+    color:white;
+    border:2px solid #0a0a4d;
+    background-color: #0a0a4d;
+    transition: 0.5s;
+}
+#logo {
+    width : inherit;
+    filter: blur(1px); 
+    position: absolute; 
+    top : 50%; 
+    left : 0; 
+    transform: translateY(-50%); 
+    opacity: 0.2
+}
+#create-acc-btn-cvr, #forgot-pw-cvr{
+    position: absolute; 
+    top : 50%; 
+    left : 50%; 
+    transform: translate(-50%, -50%); 
+    z-index : 100
+}
+#forgot-pw-cvr {
+    top : 65%; 
+}
+#forgot-pw {
+    text-decoration: underline; 
+    cursor: pointer;
 }
