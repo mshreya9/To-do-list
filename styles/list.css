@@ -42,7 +42,7 @@ input{
 input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
-.login-button, .create-acc-btn{
+.login-button, .create-acc-btn, .signup-button{
     width:auto;
     color:black;
     padding:5px 50px;

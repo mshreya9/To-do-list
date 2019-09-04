@@ -1,0 +1,15 @@
+#navbar-item{
+    padding-left:30px;
+    padding-top:20px;
+    font-family:'Barlow', sans-serif;
+    font-size:20px;
+}
+#shadow{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+}
+#navbar-item-1{
+    padding-right:30px;
+    font-family:'Barlow', sans-serif;
+    font-size:20px;
+    
+}
