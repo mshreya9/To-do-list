@@ -78,7 +78,7 @@ input:hover{
     top : 50%; 
     left : 0; 
     transform: translateY(-50%); 
-    opacity: 0.2
+    opacity: 0.3
 }
 #create-acc-btn-cvr, #forgot-pw-cvr{
     position: absolute; 

@@ -127,9 +127,9 @@
                         email: username.value,
                         password: password.value
                     }
-                    xhttp.open("POST", "http://localhost:3000/auth/login", true);
-                    xhttp.setRequestHeader("Content-type", "application/json");
-                    xhttp.send(JSON.stringify(data));
+                    xhttp.open("POST", "https://keepnnote.herokuapp.com/auth/login", true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.send(data);
                     xhttp.onreadystatechange = function (res) {
                         if (this.readyState == 4 && this.status == 200) {
                            console.log(res)
