@@ -26,38 +26,35 @@
                     <a class="nav-link" href="#" id="navbar-item">Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="navbar-item">Profile</a>
-                </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="navbar-item">Stats</a>
                 </li>
-
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Shared Lists
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="nav-link" href="#" id="navbar-item-2">List Actions</a>
-                            <a class="nav-link" href="#" id="navbar-item-2">Access List</a>
-                            <a class="nav-link" href="#" id="navbar-item-2">Modify access</a>
-                        </div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Shared Lists
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">List Actions</a>
+                      <a class="dropdown-item" href="#">Access List</a>
+                      <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
+
+              
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <img src="./assets/useravatar.png" id="navbar-item-1" href="#" style="width:70px; height:40px;">
+            <ul class="navbar-nav ml-auto" style="margin-right : 5vw; position: relative">
+                <li class="nav-item active" >
+                    <img src="./assets/useravatar.png" href="#" id="avatar" >
                 </li>
-                <li class="nav-item active" id="navbar-item-1">
-                    SHREYA
-                </li>
-                <li class="nav-item active" id="navbar-item-1">
-                    <div
-                        style="height:15px; width:15px; border:2px solid black; transform:rotate(135deg); border-bottom-color:white; border-left-color:white;">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbar-item" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Shreya
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -78,10 +75,13 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <!-- Plus sign code -->
+
+
+    <!-- <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-6">
-                <div style="position:relative; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9);">
+            <div class="col-12 col-lg-6" style=" position:relative;">
+                <div style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
                     <div
                         style="position:absolute; width:0px; height:50px; border:2px solid #0a0a4d; transform:translateX(22px);">
                         <div
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -1,6 +1,5 @@
 #navbar-item{
     padding-left:30px;
-    padding-top:20px;
     font-family:'Barlow', sans-serif;
     font-size:20px;
 }
@@ -43,10 +42,17 @@ textarea{
     height:auto;
     width:100%;
     border-radius:20px;
-    padding:0px 20px;
+    padding: 10px 15px;
 }
 .organizer-image{
     width:100%;
-    height:60%;
     margin-top:50px;
+    opacity: 0.4
+}
+#avatar {
+    height:40px; 
+    position: absolute; 
+    left : -20%; 
+    top: 50%; 
+    transform: translateY(-50%)
 }
