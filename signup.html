@@ -58,7 +58,7 @@
                 if (name.value.trim().length == 0) {
                     status.push("false");
                     name.style.borderColor = "red";
-                    name.placeholder="Please enter valid input";
+                    name.placeholder="Please enter a valid input!";
 
                 }
                 else {
@@ -75,14 +75,14 @@
                 else {
                     email.style.borderColor = "Red";
                     status.push("false");
-                    email.placeholder="Please enter valid input";
+                    email.placeholder="Please enter a valid input!";
                 }
 
                 if(password.value.trim().length<=6){
 
                     status.push("false");
                     password.style.borderColor = "red";
-                    password.placeholder="Please enter valid input";
+                    password.placeholder="Please enter a valid input!";
                 }
                 else{
                     password.style.borderColor = "green";

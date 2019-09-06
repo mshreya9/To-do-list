@@ -26,8 +26,6 @@
                     <a class="nav-link" href="#" id="navbar-item">Home</a>
                 </li>
 
-
-
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="navbar-item">Stats</a>
                 </li>
@@ -41,7 +39,6 @@
                       <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
-
               
             </ul>
             <ul class="navbar-nav ml-auto" style="margin-right : 5vw; position: relative">
@@ -67,7 +64,7 @@
                 <div class="text-input">
                     <h1>Jot Down</h1>
                 </div>
-                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"></textarea>
+                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box" id="jot-down"></textarea>
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
@@ -78,7 +75,7 @@
     <!-- Plus sign code -->
 
 
-    <!-- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-6" style=" position:relative;">
                 <div style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
@@ -91,7 +88,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -102,6 +99,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+        window.onload=function(){
+            getElementsByClassName("input-box")[0].addEventListener('click' , function(event){
+                let text = document.getElementById("jot-down");
+
+                if(text.value.trim().length == 0){
+                    status.push("false");
+                    text.style.borderColor = "red";
+                    text.placeholder = "It's an empty list!";
+                }
+                else{
+                    status.push("true");
+                }
+
+            })
+        };
+    </script>
 </body>
 
 </html>

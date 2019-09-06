@@ -1,6 +1,5 @@
 body {
     font-family:'Barlow', sans-serif;
-
 }
 .login-page{
     text-align:center;
@@ -65,7 +64,7 @@ input:hover{
     background-color: white;
     transition: 0.5s;
 }
-.login-button:hover{
+.login-button:hover, .signup-button:hover{
     color:white;
     border:2px solid #0a0a4d;
     background-color: #0a0a4d;
