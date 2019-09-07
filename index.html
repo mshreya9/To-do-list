@@ -86,7 +86,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-6" style=" position:relative;">
+            <div class="col-12 col-lg-6" style=" position:relative;" id="plus-btn">
                 <div
                     style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
                     <div
@@ -112,16 +112,16 @@
         crossorigin="anonymous"></script>
     <script>
         window.onload = function () {
-            getElementsByClassName("input-box")[0].addEventListener('click', function (event) {
+            document.getElementById("plus-btn")[0].addEventListener('click', function (event) {
                 let text = document.getElementById("jot-down");
 
                 if (text.value.trim().length == 0) {
-                    status.push("false");
+                    return false;
                     text.style.borderColor = "red";
                     text.placeholder = "It's an empty list!";
                 }
                 else {
-                    status.push("true");
+                    return true;
                 }
 
             })
