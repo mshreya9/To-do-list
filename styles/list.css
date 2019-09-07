@@ -49,6 +49,7 @@ input:hover{
     border:2px solid;
     background-color: white;
     font-size:20px;
+    cursor: pointer
 }
 
 .create-acc-btn{

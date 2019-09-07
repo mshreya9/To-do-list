@@ -54,7 +54,10 @@
                         <input id="passwd" placeholder="Password" type="password">
                     </div>
                     <div>
-                        <input type="submit" class="login-button" value="Login">
+                        <input type="button" class="login-button" value="Login">
+                    </div>
+                    <div id="error" style="font-size : 16px; color : red">
+
                     </div>
                 </div>
             </div>
@@ -95,9 +98,6 @@
                 // validation
                 let status = [];
 
-                console.log("Hello")
-
-
                 if (username.value.trim().length == 0) {
                     status.push("false");
                     username.style.borderColor = "red";
@@ -121,19 +121,19 @@
                     return false
                 } else {
                     // XHR 
-                    var xhttp = new XMLHttpRequest();
 
-                    let data = {
-                        email: username.value,
-                        password: password.value
-                    }
-                    xhttp.open("POST", "https://keepnnote.herokuapp.com/auth/login", true);
-                    xhttp.setRequestHeader("Content-Type", "application/json");
-                    xhttp.send(data);
-                    xhttp.onreadystatechange = function (res) {
-                        if (this.readyState == 4 && this.status == 200) {
-                           console.log(res)
-                        }
+                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/login");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "email": username.value, "password": password.value }));
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState==4 && xmlhttp.status === 200 ) {
+                           document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        } else if ( xmlhttp.readyState==4 && xmlhttp.status === 400){
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        } else if ( xmlhttp.readyState==4 && xmlhttp.status === 500) {
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        } 
                     };
                 }
             })
