@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/home-page.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +18,12 @@
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <div class="toggle-cover">
+                <div class="toggle-top"></div>
+                <div class="toggle-mid"></div>
+                <div class="toggle-mid"></div>
+                <div class="toggle-bottom"></div>
+            </div>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,23 +36,25 @@
                     <a class="nav-link" href="#" id="navbar-item">Stats</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Shared Lists
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">List Actions</a>
-                      <a class="dropdown-item" href="#">Access List</a>
-                      <a class="dropdown-item" href="#">Modify Access</a>
+                        <a class="dropdown-item" href="#">List Actions</a>
+                        <a class="dropdown-item" href="#">Access List</a>
+                        <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
-              
+
             </ul>
             <ul class="navbar-nav ml-auto" style="margin-right : 5vw; position: relative">
-                <li class="nav-item active" >
-                    <img src="./assets/useravatar.png" href="#" id="avatar" >
+                <li class="nav-item active">
+                    <img src="./assets/useravatar.png" href="#" id="avatar">
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbar-item" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbar-item" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Shreya
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,7 +72,8 @@
                 <div class="text-input">
                     <h1>Jot Down</h1>
                 </div>
-                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box" id="jot-down"></textarea>
+                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
+                    id="jot-down"></textarea>
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
@@ -78,7 +87,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-6" style=" position:relative;">
-                <div style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
+                <div
+                    style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
                     <div
                         style="position:absolute; width:0px; height:50px; border:2px solid #0a0a4d; transform:translateX(22px);">
                         <div
@@ -90,6 +100,7 @@
         </div>
     </div>
 
+    <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -100,16 +111,16 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script>
-        window.onload=function(){
-            getElementsByClassName("input-box")[0].addEventListener('click' , function(event){
+        window.onload = function () {
+            getElementsByClassName("input-box")[0].addEventListener('click', function (event) {
                 let text = document.getElementById("jot-down");
 
-                if(text.value.trim().length == 0){
+                if (text.value.trim().length == 0) {
                     status.push("false");
                     text.style.borderColor = "red";
                     text.placeholder = "It's an empty list!";
                 }
-                else{
+                else {
                     status.push("true");
                 }
 
