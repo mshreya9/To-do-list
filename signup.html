@@ -13,29 +13,72 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-6"
-                style="background: url('./assets/signup-image.PNG') center center; background-image: contain"></div>
-            <div class="col-12 col-lg-6">
-                <div class="login-page">
-                    <h1>Welcome</h1>
-                    <div>
-                        <input id="uname" placeholder="Name" type="text">
-                    </div>
-                    <div>
-                        <input id="email" placeholder="Email" type="email" name="emailaddress">
-                    </div>
-                    <div>
-                        <input id="passwd" placeholder="Password" type="password">
-                    </div>
-                    <div>
-                        <input class="signup-button" type="submit" value="Signup">
+    <div
+        style="border:2px solid blue; position:absolute; top:50%; left:50%;transform: translate(-50%, -50%); z-index : 100; height : auto; padding : 20px; background-color: red">
+        <div>
+            <img src="assets/gif-success.gif">
+        </div>
+        <h4 style="color : white; text-align: center">You are successfully signed in</h4>
+    </div>
+
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/navbar-logo.png" style="width:80px">
+                <span>Keep Notes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="toggle-cover">
+                    <div class="toggle-top"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-bottom"></div>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">The Product</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+            <div class="row" style="margin-top : 10px">
+                <div class="col-12 col-lg-6"
+                    style="background: url('./assets/signup-image.PNG') center center; background-image: contain"></div>
+                <div class="col-12 col-lg-6">
+                    <div class="login-page">
+                        <h1>Welcome</h1>
+                        <div>
+                            <input id="uname" placeholder="Name" type="text">
+                        </div>
+                        <div>
+                            <input id="email" placeholder="Email" type="email" name="emailaddress">
+                        </div>
+                        <div>
+                            <input id="passwd" placeholder="Password" type="password">
+                        </div>
+                        <div>
+                            <input class="signup-button" type="submit" value="Signup">
+                        </div>
+                        <div>
+                            <img src="assets/test.svg" style="width:50px; height:auto; transform:translate(100%,-100%)">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="error" style="color:red; font-size:15px;"></div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -58,7 +101,7 @@
                 if (name.value.trim().length == 0) {
                     status.push("false");
                     name.style.borderColor = "red";
-                    name.placeholder="Please enter a valid input!";
+                    name.placeholder = "Please enter a valid input!";
 
                 }
                 else {
@@ -75,32 +118,77 @@
                 else {
                     email.style.borderColor = "Red";
                     status.push("false");
-                    email.placeholder="Please enter a valid input!";
+                    email.placeholder = "Please enter a valid input!";
                 }
 
-                if(password.value.trim().length<=6){
+                if (password.value.trim().length <= 6) {
 
                     status.push("false");
                     password.style.borderColor = "red";
-                    password.placeholder="Please enter a valid input!";
+                    password.placeholder = "Please enter a valid input!";
                 }
-                else{
+                else {
                     password.style.borderColor = "green";
                     status.push("true");
                 }
 
-                // if(status.includes("false")){
-                //     return false;
-                // }
-                // else{
-                    
+                if (status.includes("false")) {
+                    return false;
+                }
+                else {
+                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status === 200) {
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        } else if (xmlhttp.readyState == 4 && xmlhttp.status === 400) {
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        } else if (xmlhttp.readyState == 4 && xmlhttp.status === 500) {
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        }
+                    };
+                }
 
-                // }
+
+                if (status.includes("false")) {
+                    return false;
+                }
+                else {
+                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status === 200) {
+                            if("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message){
+                                return true;
+                            }
+                            else if("The given email id is already registered with us"== JSON.parse(xmlhttp.responseText).message){
+                                return true;
+                            }
+                            else("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
+                                return true;
+                            }
+                       
+                        }else if (xmlhttp.readyState == 4 && xmlhttp.status === 500) {
+                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                        }
+                    };
+                }
+
+
+
+
+            }
+
+
 
 
             })
-
         };
+
 
     </script>
 </body>

@@ -112,15 +112,17 @@
         crossorigin="anonymous"></script>
     <script>
         window.onload = function () {
-            document.getElementById("plus-btn")[0].addEventListener('click', function (event) {
+            document.getElementById("plus-btn").addEventListener('click', function (event) {
                 let text = document.getElementById("jot-down");
 
                 if (text.value.trim().length == 0) {
-                    return false;
                     text.style.borderColor = "red";
                     text.placeholder = "It's an empty list!";
+                    return false;
                 }
                 else {
+                    let list = document.createElement('li');
+                    let text = document.createTextNode(document.getElementsByTagName(''))
                     return true;
                 }
 
