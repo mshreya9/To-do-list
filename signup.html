@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/list.css">
+    <link rel="stylesheet" href="./styles/login-signup.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,16 +13,16 @@
 </head>
 
 <body>
-    <div
-        style="border:2px solid blue; position:absolute; top:50%; left:50%;transform: translate(-50%, -50%); z-index : 100; height : auto; padding : 20px; background-color: red">
-        <div>
-            <img src="assets/gif-success.gif">
+    <!-- pop-up -->
+    <div id="popup">
+        <div style="text-align:center;">
+            <img id="popup-img" style="width:300px; height:auto;">
         </div>
-        <h4 style="color : white; text-align: center">You are successfully signed in</h4>
+        <h4 id="popup-text" style="color : black; text-align: center"></h4>
     </div>
 
-
-    <div>
+    <!-- main-body content -->
+    <div id="main-page">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <a class="navbar-brand" href="#">
                 <img src="./assets/navbar-logo.png" style="width:80px">
@@ -66,11 +66,9 @@
                         <div>
                             <input id="passwd" placeholder="Password" type="password">
                         </div>
-                        <div>
+                        <div style="border:2px solid blue; position:relative;">
+                            <img id="loader" src="assets/test.svg" style="width:50px; height:auto; border:2px solid red; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
                             <input class="signup-button" type="submit" value="Signup">
-                        </div>
-                        <div>
-                            <img src="assets/test.svg" style="width:50px; height:auto; transform:translate(100%,-100%)">
                         </div>
                     </div>
                 </div>
@@ -156,6 +154,10 @@
                     return false;
                 }
                 else {
+                    document.getElementById("loader").style.display="block";
+                    document.getElementsByClassName("signup-button")[0].style.value="";
+                    document.getElementsByClassName("signup-button")[0].style.backgroundColor="#0a0a4d";
+                    document.getElementsByClassName("signup-button")[0].style.color="#0a0a4d";
                     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
                     xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -163,25 +165,32 @@
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status === 200) {
                             if("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message){
+                                document.getElementById('error').innerHTML= "There was some error. Hey this ";
                                 return true;
                             }
                             else if("The given email id is already registered with us"== JSON.parse(xmlhttp.responseText).message){
+                                document.getElementById("main-page").style.opacity="0.1";
+                                document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
+                                document.getElementById("popup-text").innerHTML = "You are successfully signed up \n Redirecting...";
+                                document.getElementById("popup").style.display="block";
+                                setTimeout(function(){window.location.href="login.html"},4000);
+
                                 return true;
                             }
-                            else("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
+                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
+                                document.getElementById("main-page").style.opacity="0.2";
+                                document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
+                                document.getElementById("popup-text").innerHTML = "You are successfully signed up";
                                 return true;
+                            
                             }
                        
-                        }else if (xmlhttp.readyState == 4 && xmlhttp.status === 500) {
+                        } else{
                             document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                            return false;
                         }
                     };
                 }
-
-
-
-
-            }
 
 
 

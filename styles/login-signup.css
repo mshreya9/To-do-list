@@ -1,6 +1,19 @@
 body {
     font-family:'Barlow', sans-serif;
 }
+#popup{
+    border-radius:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    padding:40px;
+    position:absolute; 
+    top:50%; 
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index : 100; 
+    height : auto;
+    background-color:#f0f0ef;
+    display: none;
+}
 .login-page{
     text-align:center;
     margin-top:50px;
