@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/login-signup.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,6 +59,9 @@
                     <div class="login-page">
                         <h1>Welcome</h1>
                         <div>
+                            <div id="error"></div>
+                        </div>
+                        <div>
                             <input id="uname" placeholder="Name" type="text">
                         </div>
                         <div>
@@ -66,17 +70,18 @@
                         <div>
                             <input id="passwd" placeholder="Password" type="password">
                         </div>
-                        <div style="border:2px solid blue; position:relative;">
-                            <img id="loader" src="assets/test.svg" style="width:50px; height:auto; border:2px solid red; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
+                        <div style=" position:relative;">
+                            <img id="loader" src="assets/test.svg" style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
                             <input class="signup-button" type="submit" value="Signup">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="error" style="color:red; font-size:15px;"></div>
+       
     </div>
 
+    <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -134,26 +139,6 @@
                     return false;
                 }
                 else {
-                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
-                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                    xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
-                    xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status === 200) {
-                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
-                        } else if (xmlhttp.readyState == 4 && xmlhttp.status === 400) {
-                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
-                        } else if (xmlhttp.readyState == 4 && xmlhttp.status === 500) {
-                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
-                        }
-                    };
-                }
-
-
-                if (status.includes("false")) {
-                    return false;
-                }
-                else {
                     document.getElementById("loader").style.display="block";
                     document.getElementsByClassName("signup-button")[0].style.value="";
                     document.getElementsByClassName("signup-button")[0].style.backgroundColor="#0a0a4d";
@@ -163,42 +148,43 @@
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                     xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
                     xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status === 200) {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             if("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById('error').innerHTML= "There was some error. Hey this ";
+                                document.getElementById('error').innerHTML= "There was some error signing you up:<";
                                 return true;
                             }
                             else if("The given email id is already registered with us"== JSON.parse(xmlhttp.responseText).message){
+                                document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
+                                document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
+                                document.getElementsByClassName("signup-button")[0].style.color="black";
+                                document.getElementById("loader").style.display="none";
+                                document.getElementById("error").style.visibility="visible";
+                                window.location.href="login.html";
+                                document.getElementById("error").innerHTML = "The given email id is already registered with us \n Redirecting..."
+                                return true;
+                            }
+                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
                                 document.getElementById("main-page").style.opacity="0.1";
                                 document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
                                 document.getElementById("popup-text").innerHTML = "You are successfully signed up \n Redirecting...";
                                 document.getElementById("popup").style.display="block";
-                                setTimeout(function(){window.location.href="login.html"},4000);
-
+                                setTimeout(function(){window.location.href="login.html"},4500);
                                 return true;
-                            }
-                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById("main-page").style.opacity="0.2";
-                                document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
-                                document.getElementById("popup-text").innerHTML = "You are successfully signed up";
-                                return true;
-                            
                             }
                        
                         } else{
-                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
+                            document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
+                            document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
+                            document.getElementsByClassName("signup-button")[0].style.color="black";
+                            document.getElementById("loader").style.display="none";
+                            document.getElementById("error").style.visibility="visible";
+                            document.getElementById("error").innerHTML = "The given email id is already registered with us \n Redirecting..."
                             return false;
                         }
                     };
                 }
-
-
-
-
             })
         };
-
-
     </script>
 </body>
 
