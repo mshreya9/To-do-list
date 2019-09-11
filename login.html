@@ -56,11 +56,10 @@
                     <div>
                         <input id="passwd" placeholder="Password" type="password">
                     </div>
-                    <div>
-                        <input type="button" class="login-button" value="Login">
-                    </div>
-                    <div id="error" style="font-size : 16px; color : red">
+                    <div style="position: relative">
+                        <img id="loader" src="assets/test.svg" style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
 
+                        <input type="button" class="login-button" value="Login">
                     </div>
                 </div>
             </div>
@@ -123,31 +122,55 @@
                     return false
                 }
                 else {
-                    // XHR 
+
+
+
+                    document.getElementById("loader").style.display="block";
+                    document.getElementsByClassName("login-button")[0].style.value="";
+                    document.getElementsByClassName("login-button")[0].style.backgroundColor="#0a0a4d";
+                    document.getElementsByClassName("login-button")[0].style.color="#0a0a4d";
                     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
                     xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/login");
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                    xmlhttp.send(JSON.stringify({ "email": username.value, "password": password.value }));
+                    xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
                     xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState==4 && xmlhttp.status === 200 ) {
+                        if (xmlhttp.readyState == 4) {
+                            console.log(JSON.parse(xmlhttp.responseText).message)
                             if("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById('error').innerHTML = "No such user exist, ceate your account first";
-                                return true;
+                                document.getElementsByClassName("login-button")[0].style.value="Login";
+                                document.getElementsByClassName("login-button")[0].style.backgroundColor="white";
+                                document.getElementsByClassName("login-button")[0].style.color="black";
+                                document.getElementById("loader").style.display="none";
+                                document.getElementById("error").style.visibility="visible";
+                                document.getElementById('error').innerHTML= "No such user exist, create your account first";
                             }
-                            else if("Success, the password matched successfully"== JSON.parse(xmlhttp.responseText).message){
-
-                                
-                                window.onload.href="index.html";
+                            else if("The password entered by the user was wrong"== JSON.parse(xmlhttp.responseText).message){
+                                document.getElementsByClassName("login-button")[0].style.value="Login";
+                                document.getElementsByClassName("login-button")[0].style.backgroundColor="white";
+                                document.getElementsByClassName("login-button")[0].style.color="black";
+                                document.getElementById("loader").style.display="none";
+                                document.getElementById("error").style.visibility="visible";
+                                document.getElementById("error").innerHTML =  "The password entered is wrong!"; 
                             }
-                            else if ("The password entered by the user was wrong" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById('error').innerHTML = "The password entered is wrong!"; 
-                                return true;
+                            else if ("Success, the password matched successfully"== JSON.parse(xmlhttp.responseText).message){
+                                setTimeout(function(){window.location.href="accessList.html"},4500);
                             }
-                        
-                     }  else {
-                            document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
-                        } 
+                       
+                        }
                     };
+
+
+
+
+
+
+
+
+
+
+
+
+            
                 }
             })
         }
