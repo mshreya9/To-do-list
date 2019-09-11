@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="about.html">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">The Product</a>
@@ -46,6 +46,9 @@
                 <div class="login-page">
                     <div>
                         <h2>Already have an account?</h2>
+                    </div>
+                    <div>
+                        <div id="error"></div>
                     </div>
                     <div>
                         <input id="email" placeholder="Email" type="email" name="emailaddress">
@@ -128,17 +131,20 @@
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState==4 && xmlhttp.status === 200 ) {
                             if("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById("")
+                                document.getElementById('error').innerHTML = "No such user exist, ceate your account first";
                                 return true;
                             }
                             else if("Success, the password matched successfully"== JSON.parse(xmlhttp.responseText).message){
-                                return true;
+
+                                
+                                window.onload.href="index.html";
                             }
                             else if ("The password entered by the user was wrong" == JSON.parse(xmlhttp.responseText).message){
+                                document.getElementById('error').innerHTML = "The password entered is wrong!"; 
                                 return true;
                             }
                         
-                        } else {
+                     }  else {
                             document.getElementById('error').innerHTML = JSON.parse(xmlhttp.responseText).message;
                         } 
                     };
