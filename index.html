@@ -5,99 +5,80 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/login-signup.css">
     <link rel="stylesheet" href="./styles/navbar.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign up</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="toggle-cover">
-                <div class="toggle-top"></div>
-                <div class="toggle-mid"></div>
-                <div class="toggle-mid"></div>
-                <div class="toggle-bottom"></div>
-            </div>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" id="navbar-item">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="navbar-item">Stats</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Shared Lists
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">List Actions</a>
-                        <a class="dropdown-item" href="#">Access List</a>
-                        <a class="dropdown-item" href="#">Modify Access</a>
-                    </div>
-                </li>
-
-            </ul>
-            <ul class="navbar-nav ml-auto" style="margin-right : 5vw; position: relative">
-                <li class="nav-item active">
-                    <img src="./assets/useravatar.png" href="#" id="avatar">
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbar-item" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Shreya
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                    </div>
-                </li>
-            </ul>
+    <!-- pop-up -->
+    <div id="popup">
+        <div style="text-align:center;">
+            <img id="popup-img" style="width:300px; height:auto;">
         </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-6" style="padding:0vw 5vw">
-                <div class="text-input">
-                    <h1>Jot Down</h1>
-                </div>
-                <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
-                    id="jot-down"></textarea>
-            </div>
-            <div class="col-12 col-lg-6">
-                <img src="./assets/to-do-list.png" class="organizer-image">
-            </div>
-        </div>
+        <h4 id="popup-text" style="color : black; text-align: center"></h4>
     </div>
 
-    <!-- Plus sign code -->
+    <!-- main-body content -->
+    <div id="main-page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/navbar-logo.png" style="width:80px">
+                <span>Keep Notes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="toggle-cover">
+                    <div class="toggle-top"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-bottom"></div>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">The Product</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-6" style=" position:relative;" id="plus-btn">
-                <div
-                    style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
-                    <div
-                        style="position:absolute; width:0px; height:50px; border:2px solid #0a0a4d; transform:translateX(22px);">
-                        <div
-                            style="position:absolute; width:50px; height:0px; border:2px solid #0a0a4d; transform:translate(-26px,22px);">
+        <div class="container-fluid">
+            <div class="row" style="margin-top : 10px">
+                <div class="col-12 col-lg-6"
+                    style="background: url('./assets/signup-image.PNG') center center; background-image: contain"></div>
+                <div class="col-12 col-lg-6">
+                    <div class="login-page">
+                        <h1>Welcome</h1>
+                        <div>
+                            <div id="error"></div>
+                        </div>
+                        <div>
+                            <input id="uname" placeholder="Name" type="text">
+                        </div>
+                        <div>
+                            <input id="email" placeholder="Email" type="email" name="emailaddress">
+                        </div>
+                        <div>
+                            <input id="passwd" placeholder="Password" type="password">
+                        </div>
+                        <div style=" position:relative;">
+                            <img id="loader" src="assets/test.svg" style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
+                            <input class="signup-button" type="submit" value="Signup">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
 
     <script src="./scripts/navbar.js"></script>
@@ -112,20 +93,92 @@
         crossorigin="anonymous"></script>
     <script>
         window.onload = function () {
-            document.getElementById("plus-btn").addEventListener('click', function (event) {
-                let text = document.getElementById("jot-down");
+            document.getElementsByClassName("signup-button")[0].addEventListener('click', function (event) {
+                let name = document.getElementById("uname");
+                let email = document.getElementById("email");
+                let password = document.getElementById("passwd");
 
-                if (text.value.trim().length == 0) {
-                    text.style.borderColor = "red";
-                    text.placeholder = "It's an empty list!";
+                //validation
+                let status = [];
+
+                if (name.value.trim().length == 0) {
+                    status.push("false");
+                    name.style.borderColor = "red";
+                    name.placeholder = "Please enter a valid input!";
+
+                }
+                else {
+                    name.style.borderColor = "green";
+                    status.push("true");
+                }
+
+
+                let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (reg.test(email.value.trim())) {
+                    status.push("true")
+                    email.style.borderColor = "Green";
+                }
+                else {
+                    email.style.borderColor = "Red";
+                    status.push("false");
+                    email.placeholder = "Please enter a valid input!";
+                }
+
+                if (password.value.trim().length <= 6) {
+
+                    status.push("false");
+                    password.style.borderColor = "red";
+                    password.placeholder = "Please enter a valid input!";
+                }
+                else {
+                    password.style.borderColor = "green";
+                    status.push("true");
+                }
+
+                if (status.includes("false")) {
                     return false;
                 }
                 else {
-                    let list = document.createElement('li');
-                    let text = document.createTextNode(document.getElementsByTagName(''))
-                    return true;
+                    document.getElementById("loader").style.display="block";
+                    document.getElementsByClassName("signup-button")[0].style.value="";
+                    document.getElementsByClassName("signup-button")[0].style.backgroundColor="#0a0a4d";
+                    document.getElementsByClassName("signup-button")[0].style.color="#0a0a4d";
+                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message){
+                                document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
+                                document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
+                                document.getElementsByClassName("signup-button")[0].style.color="black";
+                                document.getElementById("loader").style.display="none";
+                                document.getElementById("error").style.visibility="visible";
+                                document.getElementById('error').innerHTML= "There was some error signing you up:<";
+                                return true;
+                            }
+                            else if("The given email id is already registered with us"== JSON.parse(xmlhttp.responseText).message){
+                                document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
+                                document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
+                                document.getElementsByClassName("signup-button")[0].style.color="black";
+                                document.getElementById("loader").style.display="none";
+                                document.getElementById("error").style.visibility="visible";
+                                document.getElementById("error").innerHTML = "The given email id is already registered with us \n Redirecting..."
+                                return true;
+                            }
+                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
+                                document.getElementById("main-page").style.opacity="0.1";
+                                document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
+                                document.getElementById("popup-text").innerHTML = "You are successfully signed up \n Redirecting...";
+                                document.getElementById("popup").style.display="block";
+                                setTimeout(function(){window.location.href="login.html"},4500);
+                                return true;
+                            }
+                       
+                        }
+                    };
                 }
-
             })
         };
     </script>

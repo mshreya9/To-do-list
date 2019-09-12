@@ -66,7 +66,7 @@
             <div class="col-12 col-lg-6 order-lg-1" style="position: relative; height : 400px">
                 <img src="./assets/login-image.png" id="logo">
                 <div id="create-acc-btn-cvr">
-                   <a href="signup.html"><input type="button" class="create-acc-btn" value="Create Account"></a>
+                   <a href="index.html"><input type="button" class="create-acc-btn" value="Create Account"></a>
                 </div>
                 <div id="forgot-pw-cvr">
                     <a id="forgot-pw">Forgot Password?</a>
@@ -123,8 +123,6 @@
                 }
                 else {
 
-
-
                     document.getElementById("loader").style.display="block";
                     document.getElementsByClassName("login-button")[0].style.value="";
                     document.getElementsByClassName("login-button")[0].style.backgroundColor="#0a0a4d";
@@ -153,24 +151,12 @@
                                 document.getElementById("error").innerHTML =  "The password entered is wrong!"; 
                             }
                             else if ("Success, the password matched successfully"== JSON.parse(xmlhttp.responseText).message){
-                                setTimeout(function(){window.location.href="accessList.html"},4500);
+                                setTimeout(function(){window.location.href="home.html"},4500);
                             }
                        
                         }
                     };
 
-
-
-
-
-
-
-
-
-
-
-
-            
                 }
             })
         }
