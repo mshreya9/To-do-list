@@ -57,7 +57,7 @@
                     style="background: url('./assets/signup-image.PNG') center center; background-image: contain"></div>
                 <div class="col-12 col-lg-6">
                     <div class="login-page">
-                        <h1>Welcome</h1>
+                        <h1>Sign Up</h1>
                         <div>
                             <div id="error"></div>
                         </div>
@@ -165,6 +165,7 @@
                                 document.getElementById("loader").style.display="none";
                                 document.getElementById("error").style.visibility="visible";
                                 document.getElementById("error").innerHTML = "The given email id is already registered with us \n Redirecting..."
+                                window.location.href="login.html";
                                 return true;
                             }
                             else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){

@@ -12,7 +12,7 @@ body {
     z-index : 100; 
     height : auto;
     background-color:#f0f0ef;
-    display: none;
+    display:none;
 }
 .login-page{
     text-align:center;
@@ -54,7 +54,7 @@ input{
 input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
-.login-button, .create-acc-btn, .signup-button{
+.login-button, .create-acc-btn, .signup-button, .send-btn{
     width:auto;
     color:black;
     padding:5px 50px;
@@ -115,3 +115,7 @@ input:hover{
     padding : 15px;
     visibility:hidden;
 }
+#forgot-email{
+    border:2px solid blue;
+}
+
