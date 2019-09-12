@@ -185,20 +185,12 @@
 
                 let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (reg.test(email.value.trim())) {
-                    return true;
                     email.style.borderColor = "Green";
-                }
-                else {
-                    email.style.borderColor = "Red";
-                    return false;
-                    email.placeholder = "Please enter a valid input!";
-                }
-
-                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-                xmlhttp.open("GET", "https://keepnnote.herokuapp.com/auth/forgetpw");
-                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.send(JSON.stringify({ "email": email.value }));
-                xmlhttp.onreadystatechange = function () {
+                    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                    xmlhttp.open("GET", "https://keepnnote.herokuapp.com/auth/forgetpw");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "email": email.value }));
+                    xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4  && xmlhttp.status == 200) {
                         if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
                             document.getElementById("error").style.borderColor="red";
@@ -213,17 +205,18 @@
                             document.getElementById("error").visibility="visible";
                         }
                         else{
-
+                            document.getElementById("error").style.borderColor="grren";
+                            document.getElementById("error").style.color="green";
+                            document.getElementById("error").innerHTML="Success, email sent successfully";
+                            document.getElementById("error").visibility="visible";
                         }
                     }
-
-
+                }
+                else {
+                    email.style.borderColor = "Red";
+                    email.placeholder = "Please enter a valid input!";
+                }
                 };
-
-
-
-
-
 
             })
         }
