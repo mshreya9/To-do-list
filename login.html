@@ -20,7 +20,7 @@
         <div style="float:right; transform:translate(100%, -100%); cursor:pointer;">
             <img src="./assets/cross.svg" style="width:20px; height:auto">
         </div>
-        <div id="error"></div>
+        <div id="popup-error"></div>
         <div style="text-align:center">
             <input id="forgot-email" placeholder="Enter your email" type="email" name="emailaddress">
         </div>
@@ -195,25 +195,28 @@
                 }
 
                 var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-                xmlhttp.open("GET", "https://keepnnote.herokuapp.com/auth/forgetpw");
+                xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/forgetpw");
                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 xmlhttp.send(JSON.stringify({ "email": email.value }));
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4  && xmlhttp.status == 200) {
                         if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
-                            document.getElementById("error").style.borderColor="red";
-                            document.getElementById("error").style.color="red";
-                            document.getElementById("error").innerHTML="No such user exists, try signing up first";
-                            document.getElementById("error").visibility="visible";
+                            document.getElementById("popup-error").style.borderColor="red";
+                            document.getElementById("popup-error").style.color="red";
+                            document.getElementById("popup-error").innerHTML="No such user exists, try signing up first";
+                            document.getElementById("popup-error").visibility="visible";
                         }
                         else if ("There was problem resetting your password, try again later" == JSON.parse(xmlhttp.responseText).message) {
-                            document.getElementById("error").style.borderColor="red";
-                            document.getElementById("error").style.color="red";
-                            document.getElementById("error").innerHTML="There was a problem resetting your password, try again after some time";
-                            document.getElementById("error").visibility="visible";
+                            document.getElementById("popup-error").style.borderColor="red";
+                            document.getElementById("popup-error").style.color="red";
+                            document.getElementById("popup-error").innerHTML="There was a problem resetting your password, try again after some time";
+                            document.getElementById("popup-error").visibility="visible";
                         }
                         else{
-
+                            document.getElementById("popup-error").style.borderColor="green";
+                            document.getElementById("popup-error").style.color="green";
+                            document.getElementById("popup-error").innerHTML="Success, the email was sent successfully";
+                            document.getElementById("popup-error").visibility="visible";
                         }
                     }
 
