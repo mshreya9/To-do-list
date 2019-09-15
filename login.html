@@ -29,63 +29,65 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="#">
-            <img src="./assets/navbar-logo.png" style="width:80px">
-            <span>Keep Notes</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="toggle-cover">
-                <div class="toggle-top"></div>
-                <div class="toggle-mid"></div>
-                <div class="toggle-mid"></div>
-                <div class="toggle-bottom"></div>
+    <div id="main-page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/navbar-logo.png" style="width:80px">
+                <span>Keep Notes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="toggle-cover">
+                    <div class="toggle-top"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-mid"></div>
+                    <div class="toggle-bottom"></div>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">The Product</a>
+                    </li>
+                </ul>
             </div>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">The Product</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="container-fluid">
-        <div class="row" style="padding-top : 40px">
-            <div class="col-12 col-lg-6 order-lg-2">
-                <div class="login-page">
-                    <div>
-                        <h2>Already have an account?</h2>
-                    </div>
-                    <div>
-                        <div id="error"></div>
-                    </div>
-                    <div>
-                        <input id="email" placeholder="Email" type="email" name="emailaddress">
-                    </div>
-                    <div>
-                        <input id="passwd" placeholder="Password" type="password">
-                    </div>
-                    <div style="position: relative">
-                        <img id="loader" src="assets/test.svg"
-                            style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
+        <div class="container-fluid">
+            <div class="row" style="padding-top : 40px">
+                <div class="col-12 col-lg-6 order-lg-2">
+                    <div class="login-page">
+                        <div>
+                            <h2>Already have an account?</h2>
+                        </div>
+                        <div>
+                            <div id="error"></div>
+                        </div>
+                        <div>
+                            <input id="email" placeholder="Email" type="email" name="emailaddress">
+                        </div>
+                        <div>
+                            <input id="passwd" placeholder="Password" type="password">
+                        </div>
+                        <div style="position: relative">
+                            <img id="loader" src="assets/test.svg"
+                                style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
 
-                        <input type="button" class="login-button" value="Login">
+                            <input type="button" class="login-button" value="Login">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-6 order-lg-1" style="position: relative; height : 400px">
-                <img src="./assets/login-image.png" id="logo">
-                <div id="create-acc-btn-cvr">
-                    <a href="index.html"><input type="button" class="create-acc-btn" value="Create Account"></a>
-                </div>
-                <div id="forgot-pw-cvr">
-                    <a id="forgot-pw">Forgot Password?</a>
+                <div class="col-12 col-lg-6 order-lg-1" style="position: relative; height : 400px">
+                    <img src="./assets/login-image.png" id="logo">
+                    <div id="create-acc-btn-cvr">
+                        <a href="index.html"><input type="button" class="create-acc-btn" value="Create Account"></a>
+                    </div>
+                    <div id="forgot-pw-cvr">
+                        <a id="forgot-pw">Forgot Password?</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -186,57 +188,45 @@
                 let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (reg.test(email.value.trim())) {
                     email.style.borderColor = "Green";
-<<<<<<< HEAD
-                }
-                else {
-                    email.style.borderColor = "Red";
-                    return false;
-                    email.placeholder = "Please enter a valid input!";
-                }
-
-                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-                xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/forgetpw");
-                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.send(JSON.stringify({ "email": email.value }));
-                xmlhttp.onreadystatechange = function () {
-=======
                     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
                     xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/forgetpw");
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                     xmlhttp.send(JSON.stringify({ "email": email.value }));
                     xmlhttp.onreadystatechange = function () {
->>>>>>> 7c9ec90d913dd4899bdf9ce1b105b996a4f9dd3f
-                    if (xmlhttp.readyState == 4  && xmlhttp.status == 200) {
-                        if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
-                            document.getElementById("popup-error").style.borderColor="red";
-                            document.getElementById("popup-error").style.color="red";
-                            document.getElementById("popup-error").innerHTML="No such user exists, try signing up first";
-                            document.getElementById("popup-error").visibility="visible";
-                        }
-                        else if ("There was problem resetting your password, try again later" == JSON.parse(xmlhttp.responseText).message) {
-                            document.getElementById("popup-error").style.borderColor="red";
-                            document.getElementById("popup-error").style.color="red";
-                            document.getElementById("popup-error").innerHTML="There was a problem resetting your password, try again after some time";
-                            document.getElementById("popup-error").visibility="visible";
-                        }
-                        else{
-                            document.getElementById("popup-error").style.borderColor="green";
-                            document.getElementById("popup-error").style.color="green";
-                            document.getElementById("popup-error").innerHTML="Success, the email was sent successfully";
-                            document.getElementById("popup-error").visibility="visible";
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementById("main-page").style.opacity="0.1";
+                                document.getElementById("popup-error").style.borderColor = "red";
+                                document.getElementById("popup-error").style.color = "red";
+                                document.getElementById("popup-error").innerHTML = "No such user exists, try signing up first";
+                                document.getElementById("popup-error").visibility = "visible";
+                            }
+                            else if ("There was problem resetting your password, try again later" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementById("main-page").style.opacity="0.1";
+                                document.getElementById("popup-error").style.borderColor = "red";
+                                document.getElementById("popup-error").style.color = "red";
+                                document.getElementById("popup-error").innerHTML = "There was a problem resetting your password, try again after some time";
+                                document.getElementById("popup-error").visibility = "visible";
+                            }
+                            else {
+                                document.getElementById("main-page").style.opacity="0.1";
+                                document.getElementById("popup-error").style.borderColor = "green";
+                                document.getElementById("popup-error").style.color = "green";
+                                document.getElementById("popup-error").innerHTML = "Success, the email was sent successfully";
+                                document.getElementById("popup-error").visibility = "visible";
+                            }
                         }
                     }
                 }
                 else {
                     email.style.borderColor = "Red";
-                    return false;
                     email.placeholder = "Please enter a valid input!";
+                    return false;`
                 }
-
-               
-
-            })
-        }
+            });
+        });
+    })
+})
     </script>
 </body>
 
