@@ -19,21 +19,25 @@
     <div id="popup">
 
         <div style="float:right; transform:translate(100%, -100%); cursor:pointer;">
-            <img src="./assets/cross.svg" style="width:20px; height:auto">
+            <img src="./assets/cross.svg" id="close-btn" style="width:20px; height:auto">
         </div>
         <div style="text-align:center;">
             <h4>Forgot password?</h4>
-
             <h6>Enter your email to get the new password</h6>
+        </div>
+        <div id="error-popup"
+            style="text-align:center; border:2px solid red; padding:10px; border-radius:10px; margin-top:20px;">
+            Mail was successfully sent.
         </div>
         <div id="popup-email">
         </div>
         <div id="popup-error"></div>
         <div style="text-align:center;">
-            <input id="forgot-email" placeholder="Enter your email" type="email" name="emailaddress">
+            <input id="forgot-email" placeholder="Enter your email" type="email" name="emailaddress"
+                style="margin-top: 20px">
         </div>
         <div style="text-align:center">
-            <input type="button" class="send-btn" value="Send">
+            <input type="button" class="send-btn" value="Send" style="margin-top:20px;">
         </div>
     </div>
 
@@ -115,7 +119,6 @@
     <script>
 
         window.onload = function () {
-
             document.getElementsByClassName("login-button")[0].addEventListener('click', function (event) {
 
                 // pick values
@@ -186,9 +189,18 @@
                 }
             })
 
+            document.getElementById("forgot-pw").addEventListener("click", function () {
+                document.getElementById("main-page").style.opacity = "0.1";
+                document.getElementById("popup").style.display = "block";
+            })
 
-            document.getElementById("forgot-pw").addEventListener('click', function () {
+            document.getElementById("close-btn").addEventListener("click", function(){
+                document.getElementById("main-page").style.opacity = "1.0";
+                document.getElementById("popup").style.display = "none";
+            })
 
+
+            document.getElementsByClassName("send-btn")[0].addEventListener('click', function () {
                 let email = document.getElementById("forgot-email");
 
                 //email validation
@@ -204,6 +216,7 @@
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
                                 document.getElementById("main-page").style.opacity = "0.1";
+                                document.getElementById("popup").style.display = "block";
                                 document.getElementById("popup-error").style.borderColor = "red";
                                 document.getElementById("popup-error").style.color = "red";
                                 document.getElementById("popup-error").innerHTML = "No such user exists, try signing up first";
@@ -211,6 +224,7 @@
                             }
                             else if ("There was problem resetting your password, try again later" == JSON.parse(xmlhttp.responseText).message) {
                                 document.getElementById("main-page").style.opacity = "0.1";
+                                document.getElementById("popup").style.display = "block";
                                 document.getElementById("popup-error").style.borderColor = "red";
                                 document.getElementById("popup-error").style.color = "red";
                                 document.getElementById("popup-error").innerHTML = "There was a problem resetting your password, try again after some time";
@@ -218,6 +232,7 @@
                             }
                             else {
                                 document.getElementById("main-page").style.opacity = "0.1";
+                                document.getElementById("popup").style.display = "block";
                                 document.getElementById("popup-error").style.borderColor = "green";
                                 document.getElementById("popup-error").style.color = "green";
                                 document.getElementById("popup-error").innerHTML = "Success, the email was sent successfully";
@@ -229,12 +244,14 @@
                 else {
                     email.style.borderColor = "Red";
                     email.placeholder = "Please enter a valid input!";
-                    return false;`
+                    return false;
                 }
-            });
-        });
-    })
-})
+            })
+
+
+        }
+
+
     </script>
 </body>
 
