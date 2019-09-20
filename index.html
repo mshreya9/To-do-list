@@ -164,8 +164,7 @@
                                 document.getElementsByClassName("signup-button")[0].style.color="black";
                                 document.getElementById("loader").style.display="none";
                                 document.getElementById("error").style.visibility="visible";
-                                document.getElementById("error").innerHTML = "The given email id is already registered with us \n Redirecting..."
-                                window.location.href="login.html";
+                                document.getElementById("error").innerHTML = "The given email id is already registered with us"
                                 return true;
                             }
                             else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){

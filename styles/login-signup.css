@@ -11,7 +11,6 @@ body {
     transform: translate(-50%, -50%);
     z-index : 2000; 
     height : auto;
-    width:300px;
     background-color:#f0f0ef;
     display:none;
 }

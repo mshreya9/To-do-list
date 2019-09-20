@@ -16,7 +16,7 @@
 <body>
     <!-- forgot password popup -->
 
-    <div id="popup">
+    <div id="popup" style="width : 40%; min-width: 300px;">
 
         <div style="float:right; transform:translate(100%, -100%); cursor:pointer;">
             <img src="./assets/cross.svg" id="close-btn" style="width:20px; height:auto">
@@ -25,18 +25,16 @@
             <h4>Forgot password?</h4>
             <h6>Enter your email to get the new password</h6>
         </div>
-        <div id="error-popup"
-            style="text-align:center; border:2px solid red; padding:10px; border-radius:10px; margin-top:20px;">
-            Mail was successfully sent.
-        </div>
-        <div id="popup-email">
-        </div>
+
         <div id="popup-error"></div>
         <div style="text-align:center;">
             <input id="forgot-email" placeholder="Enter your email" type="email" name="emailaddress"
                 style="margin-top: 20px">
         </div>
-        <div style="text-align:center">
+        <div style="text-align:center; position: relative;">
+                <img id="load" src="assets/test.svg"
+                style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display: none ">
+
             <input type="button" class="send-btn" value="Send" style="margin-top:20px;">
         </div>
     </div>
@@ -180,7 +178,8 @@
                                 document.getElementById("error").innerHTML = "The password entered is wrong!";
                             }
                             else if ("Success, the password matched successfully" == JSON.parse(xmlhttp.responseText).message) {
-                                setTimeout(function () { window.location.href = "home.html" }, 4500);
+                                localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
+                                window.location.href = "home.html";
                             }
 
                         }
@@ -197,6 +196,7 @@
             document.getElementById("close-btn").addEventListener("click", function(){
                 document.getElementById("main-page").style.opacity = "1.0";
                 document.getElementById("popup").style.display = "none";
+
             })
 
 
@@ -204,7 +204,9 @@
                 let email = document.getElementById("forgot-email");
 
                 //email validation
-
+                document.getElementById("load").style.display = "block";
+                document.getElementsByClassName("send-btn")[0].style.backgroundColor = "#0a0a4d";
+                document.getElementsByClassName("send-btn")[0].style.color = "#0a0a4d";
                 let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (reg.test(email.value.trim())) {
                     email.style.borderColor = "Green";
@@ -215,28 +217,49 @@
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             if ("No such user exist try signing up first" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementsByClassName("send-btn")[0].style.value = "Send";
+                                document.getElementsByClassName("send-btn")[0].style.backgroundColor = "white";
+                                document.getElementsByClassName("send-btn")[0].style.color = "black";
                                 document.getElementById("main-page").style.opacity = "0.1";
                                 document.getElementById("popup").style.display = "block";
-                                document.getElementById("popup-error").style.borderColor = "red";
+                                document.getElementById("popup-error").style.border = "2px solid red";
                                 document.getElementById("popup-error").style.color = "red";
+                                document.getElementById("popup-error").style.padding = "10px";
+                                document.getElementById("popup-error").style.borderRadius = "8px";
+                                document.getElementById("popup-error").style.textAlign = "center";
+                                document.getElementById("load").style.display = "none";
                                 document.getElementById("popup-error").innerHTML = "No such user exists, try signing up first";
                                 document.getElementById("popup-error").visibility = "visible";
                             }
                             else if ("There was problem resetting your password, try again later" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementsByClassName("send-btn")[0].style.value = "Send";
+                                document.getElementsByClassName("send-btn")[0].style.backgroundColor = "white";
+                                document.getElementsByClassName("send-btn")[0].style.color = "black";
                                 document.getElementById("main-page").style.opacity = "0.1";
                                 document.getElementById("popup").style.display = "block";
-                                document.getElementById("popup-error").style.borderColor = "red";
+                                document.getElementById("popup-error").style.border = "2px solid red";
                                 document.getElementById("popup-error").style.color = "red";
+                                document.getElementById("popup-error").style.padding = "10px";
+                                document.getElementById("popup-error").style.borderRadius = "8px";
+                                document.getElementById("popup-error").style.textAlign = "center";
+                                document.getElementById("load").style.display = "none";
                                 document.getElementById("popup-error").innerHTML = "There was a problem resetting your password, try again after some time";
                                 document.getElementById("popup-error").visibility = "visible";
                             }
                             else {
+                                document.getElementsByClassName("send-btn")[0].style.value = "Send";
+                                document.getElementsByClassName("send-btn")[0].style.backgroundColor = "white";
+                                document.getElementsByClassName("send-btn")[0].style.color = "black";
                                 document.getElementById("main-page").style.opacity = "0.1";
                                 document.getElementById("popup").style.display = "block";
-                                document.getElementById("popup-error").style.borderColor = "green";
+                                document.getElementById("popup-error").style.border = "2px solid green";
                                 document.getElementById("popup-error").style.color = "green";
+                                document.getElementById("popup-error").style.padding = "10px";
+                                document.getElementById("popup-error").style.borderRadius = "8px";
+                                document.getElementById("popup-error").style.textAlign = "center";
                                 document.getElementById("popup-error").innerHTML = "Success, the email was sent successfully";
                                 document.getElementById("popup-error").visibility = "visible";
+                                document.getElementById("load").style.display = "none";
                             }
                         }
                     }
