@@ -1,6 +1,6 @@
 #navbar-item{
-    padding-left:30px;
-    padding-top:20px;
+    padding-top:10px;
+    padding-bottom:10px;
     font-family:'Barlow', sans-serif;
     font-size:20px;
 }
@@ -8,8 +8,17 @@
     box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 }
 #navbar-item-1{
-    padding-right:30px;
     font-family:'Barlow', sans-serif;
     font-size:20px;
-    
+}
+.nav-item {
+    padding-left : 10px;
+    padding-right : 10px
+}
+#avatar {
+    height:40px; 
+    position: absolute; 
+    left : -20%; 
+    top: 50%; 
+    transform: translateY(-50%)
 }

@@ -41,7 +41,7 @@
                         Shared Lists
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">List Actions</a>
+                        <a class="dropdown-item" href="public-list.html">Public List</a>
                         <a class="dropdown-item" href="#">Access List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
@@ -123,18 +123,23 @@
                 }
             };
             xmlhttp.send();
+
+            document.getElementById("jot-down").addEventListener("input", function(e) {
+                console.log("hi");
+                e.target.style.borderColor = "lightblue"
+            })
+
             document.getElementById("plus-btn").addEventListener('click', function (event) {
                 let text = document.getElementById("jot-down");
 
                 if (text.value.trim().length == 0) {
                     text.style.borderColor = "red";
                     text.placeholder = "It's an empty list!";
-                    return false;
                 }
                 else {
-                    let list = document.createElement('li');
-                    let text = document.createTextNode(document.getElementsByTagName(''))
-                    return true;
+                    // let list = document.createElement('li');
+                    // let text = document.createTextNode(document.getElementsByTagName(''));
+                    text.style.borderColor = "lightblue";
                 }
 
             })
