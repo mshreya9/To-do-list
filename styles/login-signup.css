@@ -92,6 +92,9 @@ input:hover{
     transform: translateY(-50%); 
     opacity: 0.3
 }
+#logo-top:hover{
+    transform:scale(1.1,1.1);
+}
 #create-acc-btn-cvr, #forgot-pw-cvr{
     position: absolute; 
     top : 50%; 
