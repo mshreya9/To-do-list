@@ -121,11 +121,11 @@
         window.onload = function () {
             document.getElementsByClassName("login-button")[0].addEventListener('click', function (event) {
 
-                // pick values
+        
                 let username = document.getElementById("email");
                 let password = document.getElementById("passwd");
 
-                // validation
+              
                 let status = [];
 
                 if (username.value.trim().length == 0) {
@@ -203,9 +203,7 @@
 
 
             document.getElementsByClassName("send-btn")[0].addEventListener('click', function () {
-                let email = document.getElementById("forgot-email");
-
-                //email validation
+                let email = document.getElementById("forgot-
                 document.getElementById("load").style.display = "block";
                 document.getElementsByClassName("send-btn")[0].style.backgroundColor = "#0a0a4d";
                 document.getElementsByClassName("send-btn")[0].style.color = "#0a0a4d";
