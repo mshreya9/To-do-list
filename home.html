@@ -114,7 +114,7 @@
         window.onload = function () {
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/getname");
+            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/getname");
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token"));
             xmlhttp.onreadystatechange = function () {
@@ -124,9 +124,9 @@
             };
             xmlhttp.send();
 
-            document.getElementById("jot-down").addEventListener("input", function(e) {
-                console.log("hi");
-                e.target.style.borderColor = "lightblue"
+            document.getElementById("jot-down").addEventListener("focus", function(e) {
+                e.target.style.borderColor = "lightblue";
+                e.target.placeholder = "Get your tasks done!";
             })
 
             document.getElementById("plus-btn").addEventListener('click', function (event) {
@@ -148,3 +148,4 @@
 </body>
 
 </html>
+
