@@ -76,7 +76,19 @@
                     id="jot-down"></textarea>
             </div>
             <div class="col-12 col-lg-6">
-                <img src="./assets/to-do-list.png" class="organizer-image">
+                    <img src="./assets/to-do-list.png" class="organizer-image">
+
+                <div style="border:2px solid red; text-align:center;">
+                    <li
+                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; width:50%">
+                        nikhil</li>
+                    <li
+                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; margin-top:20px; width:50%">
+                        nikhil</li>
+                    <li
+                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; margin-top:20px; width:50%">
+                        nikhil</li>
+                </div>
             </div>
         </div>
     </div>
@@ -126,7 +138,7 @@
             xmlhttp.send();
 
 
-            document.getElementById("jot-down").addEventListener("focus", function(e) {
+            document.getElementById("jot-down").addEventListener("focus", function (e) {
                 e.target.style.borderColor = "lightblue";
                 e.target.placeholder = "Get your tasks done!";
             })
@@ -139,9 +151,13 @@
                     text.placeholder = "It's an empty list!";
                 }
                 else {
-                    // let list = document.createElement('li');
-                    // let text = document.createTextNode(document.getElementsByTagName(''));
                     text.style.borderColor = "lightblue";
+                    let div = document.createElement("div");
+                    div.setAttribute("style", "border:2px solid red; text-align:center; transform:translateY(150%);");
+                    let li = document.createElement("li");
+                    li.setAttribute("style", "font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; width:50%");
+                    li = document.appendChild(div);
+
                 }
 
             })
@@ -150,4 +166,3 @@
 </body>
 
 </html>
-
