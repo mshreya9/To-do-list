@@ -76,22 +76,8 @@
                     id="jot-down"></textarea>
             </div>
             <div class="col-12 col-lg-6">
-                    <img src="./assets/to-do-list.png" class="organizer-image">
-
-                <div >
-                    <ul>
-                        <li
-                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; width:50%">
-                        nikhil</li>
-                    <li
-                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; margin-top:20px; width:50%">
-                        nikhil</li>
-                    <li
-                        style="font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; margin-top:20px; width:50%">
-                        nikhil</li>
-                    </ul>
-       
-                </div>
+                <img src="./assets/to-do-list.png" class="organizer-image">
+                <div style="padding : 0 20px; margin-top:100px;"  id="task-list"></div>
             </div>
         </div>
     </div>
@@ -156,15 +142,26 @@
                 else {
                     text.style.borderColor = "lightblue";
                     let div = document.createElement("div");
-                    div.setAttribute("style", "border:2px solid red; text-align:center; transform:translateY(150%);");
-                    let li = document.createElement("li");
-                    li.setAttribute("style", "font-size:20px; font-weight:bolder; border:2px solid transparent; box-shadow:0 0 10px 0 rgba(0,0,0,.30); border-radius:20px; width:50%");
-                    li = document.appendChild(div);
-
+                    div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                    let div1 = document.createElement("div");
+                    div1.setAttribute("class", "div1-attribute" )
+                    let span = document.createElement("span");
+                    let img = document.createElement("img");
+                    img.setAttribute("class", "img-attribute");
+                    img.setAttribute("src", "./assets/cross.svg");
+                    let content = document.createTextNode(text.value);
+                    span.appendChild(img); 
+                    div1.appendChild(content);  
+                    div1.appendChild(span); 
+                    div.appendChild(div1); 
+                    span.firstElementChild.addEventListener('click', function(e) {
+                        e.target.parentNode.parentNode.parentNode.remove();      
+                    })
+                document.getElementById("task-list").appendChild(div);
                 }
-
             })
-        };
+
+        }
     </script>
 </body>
 

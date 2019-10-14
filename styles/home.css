@@ -51,7 +51,7 @@ textarea{
 .organizer-image{
     width:100%;
     margin-top:50px;
-    opacity: 0.4;
+    opacity: 0.2;
     position: absolute;
     top : 0;
     left : 0;
@@ -63,4 +63,29 @@ textarea{
     left : -20%; 
     top: 50%; 
     transform: translateY(-50%)
+}
+#task-list {
+    height: 500px;
+    overflow-y: scroll;
+}
+.img-attribute{
+    width:3%;
+    height:auto; 
+    position:absolute; 
+    top:50%; 
+    right:1%; 
+    transform: translate(-50%, -50%); 
+    cursor:pointer;
+}
+.div1-attribute{
+    position: relative;
+    height : auto;
+    word-break : break-all; 
+    padding: 10px 40px 10px 20px;
+    font-size:20px; 
+    font-weight:bolder; 
+    border:2px solid transparent; 
+    box-shadow:0 0 10px 0 rgba(0,0,0,.30); 
+    border-radius:40px; 
+    width:100%"
 }
