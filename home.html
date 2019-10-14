@@ -77,7 +77,7 @@
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
-                <div style="padding : 0 20px; margin-top:100px;"  id="task-list"></div>
+                <div style="padding : 0 20px; margin-top:100px;" id="task-list"></div>
             </div>
         </div>
     </div>
@@ -141,23 +141,42 @@
                 }
                 else {
                     text.style.borderColor = "lightblue";
-                    let div = document.createElement("div");
-                    div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
-                    let div1 = document.createElement("div");
-                    div1.setAttribute("class", "div1-attribute" )
-                    let span = document.createElement("span");
-                    let img = document.createElement("img");
-                    img.setAttribute("class", "img-attribute");
-                    img.setAttribute("src", "./assets/cross.svg");
-                    let content = document.createTextNode(text.value);
-                    span.appendChild(img); 
-                    div1.appendChild(content);  
-                    div1.appendChild(span); 
-                    div.appendChild(div1); 
-                    span.firstElementChild.addEventListener('click', function(e) {
-                        e.target.parentNode.parentNode.parentNode.remove();      
-                    })
-                document.getElementById("task-list").appendChild(div);
+
+
+                    var xmlhttp = new XMLHttpRequest(); //Request Instance
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/private/addlist");
+                    xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "list": text.value }));
+                    xmlhttp.onreadystatechange = function () {
+                        let div = document.createElement("div");
+                        div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                        let div1 = document.createElement("div");
+                        div1.setAttribute("class", "div1-attribute")
+                        let span = document.createElement("span");
+                        let img = document.createElement("img");
+                        img.setAttribute("class", "img-attribute");
+                        img.setAttribute("src", "./assets/cross.svg");
+                        let content = document.createTextNode(text.value);
+                        span.appendChild(img);
+                        div1.appendChild(content);
+                        div1.appendChild(span);
+                        div.appendChild(div1);
+
+                        span.firstElementChild.addEventListener('click', function (e) {
+
+                            var xmlhttp = new XMLHttpRequest(); //Request Instance
+                            xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/private/addlist");
+                            xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+                            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                            xmlhttp.send(JSON.stringify({ "list": text.value }));
+                            xmlhttp.onreadystatechange = function () {}
+                                e.target.parentNode.parentNode.parentNode.remove();
+                            }) 
+                        document.getElementById("task-list").appendChild(div);
+
+                    }
+
                 }
             })
 
