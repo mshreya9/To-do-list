@@ -22,3 +22,10 @@
     top: 50%; 
     transform: translateY(-50%)
 }
+.text-input{
+    text-align:center;
+    margin-top:50px;
+    font-family: 'Barlow', sans-serif;
+    font-size:20px;
+    margin-bottom:20px;
+}

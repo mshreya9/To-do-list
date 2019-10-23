@@ -41,7 +41,7 @@
                         Shared Lists
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="home.css">Private List</a>
+                        <a class="dropdown-item" href="public-list.html">Public List</a>
                         <a class="dropdown-item" href="#">Access List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
@@ -59,7 +59,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" id="logout" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -71,12 +71,14 @@
             <div class="col-12 col-lg-6" style="padding:0vw 5vw">
                 <div class="text-input">
                     <h1>Jot Down</h1>
+                    <h4>Public List</h4>
                 </div>
                 <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
                     id="jot-down"></textarea>
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
+                <div style="padding : 0 20px; margin-top:100px;" id="task-list"></div>
             </div>
         </div>
     </div>
@@ -114,19 +116,58 @@
         window.onload = function () {
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/public/addlist");
+            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/getname");
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token"));
+            xmlhttp.send();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
+                    console.log(xmlhttp.responseText)
                     document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
                 }
             };
-            xmlhttp.send();
 
-            document.getElementById("jot-down").addEventListener("input", function(e) {
-                console.log("hi");
-                e.target.style.borderColor = "lightblue"
+            var xmlhttpsecond = new XMLHttpRequest();
+            let text = document.getElementById("jot-down");
+            xmlhttpsecond.open("GET", "https://keepnnote.herokuapp.com/secure/public/getlist");
+            xmlhttpsecond.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+            xmlhttpsecond.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttpsecond.send();
+            // giving XHR call first then adding it to the DOM when successful
+            xmlhttpsecond.onreadystatechange = function () {
+                if (xmlhttpsecond.readyState == 4) {
+                    let arr = JSON.parse(xmlhttpsecond.responseText).list;
+                    for(i = 0; i < arr.length; i++){
+                        let div = document.createElement("div");
+                        div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                        let div1 = document.createElement("div");
+                        div1.setAttribute("class", "div1-attribute")
+                        let span = document.createElement("span");
+                        let img = document.createElement("img");
+                        img.setAttribute("class", "img-attribute");
+                        img.setAttribute("src", "./assets/cross.svg");
+                        let content = document.createTextNode(arr[i]);
+                        span.appendChild(img);
+                        div1.appendChild(content);
+                        div1.appendChild(span);
+                        div.appendChild(div1);
+                        span.firstElementChild.addEventListener('click', function (e) {
+                            var xmlhttp = new XMLHttpRequest(); //Request Instance
+                            xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/dellist");
+                            xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+                            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                            xmlhttp.send(JSON.stringify({ "remove": e.target.parentNode.parentNode.innerText }));
+                            xmlhttp.onreadystatechange = function () { }
+                            e.target.parentNode.parentNode.parentNode.remove();
+                        })
+                        document.getElementById("task-list").appendChild(div);
+                    }
+                }
+            }
+
+            document.getElementById("jot-down").addEventListener("focus", function (e) {
+                e.target.style.borderColor = "lightblue";
+                e.target.placeholder = "Get your tasks done!";
             })
 
             document.getElementById("plus-btn").addEventListener('click', function (event) {
@@ -137,13 +178,46 @@
                     text.placeholder = "It's an empty list!";
                 }
                 else {
-                    // let list = document.createElement('li');
-                    // let text = document.createTextNode(document.getElementsByTagName(''));
                     text.style.borderColor = "lightblue";
-                }
+                    xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/addlist");
+                    xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+                    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send(JSON.stringify({ "list": text.value }));
+                    // giving XHR call first then adding it to the DOM when successful
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4) {
+                            let div = document.createElement("div");
+                            div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                            let div1 = document.createElement("div");
+                            div1.setAttribute("class", "div1-attribute")
+                            let span = document.createElement("span");
+                            let img = document.createElement("img");
+                            img.setAttribute("class", "img-attribute");
+                            img.setAttribute("src", "./assets/cross.svg");
+                            let content = document.createTextNode(text.value);
+                            span.appendChild(img);
+                            div1.appendChild(content);
+                            div1.appendChild(span);
+                            div.appendChild(div1);
+                            span.firstElementChild.addEventListener('click', function (e) {
+                                xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/dellist");
+                                xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
+                                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText )}));
+                                xmlhttp.onreadystatechange = function () { }
+                                e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
+                            })
+                            document.getElementById("task-list").appendChild(div);
+                        }
+                    }
 
+                }
             })
-        };
+
+            document.getElementById("logout").addEventListener("click", (e) => {
+                localStorage.removeItem("token"); // token is removed so its value is null and hence so no saved lists.
+            })
+        }
     </script>
 </body>
 
