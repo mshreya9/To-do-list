@@ -89,3 +89,23 @@ textarea{
     border-radius:40px; 
     width:100%"
 }
+#input-email-collab {
+    width : 100%;
+}
+input{
+    width:60%;
+    padding: 5px 20px;
+    margin-top:50px;
+    color:black;
+    display: inline-block;
+    font-size:20px;
+    height:55px;
+    text-decoration:none;
+    border-radius:40px;
+    border:2px solid lightblue;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+input:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+}
