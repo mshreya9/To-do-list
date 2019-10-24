@@ -42,7 +42,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="public-list.html">Public List</a>
-                        <a class="dropdown-item" href="#">Access List</a>
+                        <a class="dropdown-item" href="accessList.html">Access List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
@@ -137,7 +137,7 @@
             xmlhttpsecond.onreadystatechange = function () {
                 if (xmlhttpsecond.readyState == 4) {
                     let arr = JSON.parse(xmlhttpsecond.responseText).list;
-                    for(i = 0; i < arr.length; i++){
+                    for (i = 0; i < arr.length; i++) {
                         let div = document.createElement("div");
                         div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
                         let div1 = document.createElement("div");
@@ -203,7 +203,7 @@
                                 xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/private/dellist");
                                 xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText )}));
+                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText) }));
                                 xmlhttp.onreadystatechange = function () { }
                                 e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
                             })

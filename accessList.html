@@ -3,16 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/home.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Advanced to-do list">
+    <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></noscript>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+        
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+<link rel="stylesheet" href="./styles/accessList.css">
+
     <title>Access List</title>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
         <a class="navbar-brand" href="#"></a>
@@ -42,7 +47,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="home.html">Public List</a>
-                        <a class="dropdown-item" href="#">Access List</a>
+                        <a class="dropdown-item" href="home.html">Private List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
@@ -84,7 +89,7 @@
         </div>
     </div>
 
-    <div id="list"></div>
+    <div id="task-list"></div>
 
 
     <script src="./scripts/navbar.js"></script>
@@ -112,7 +117,6 @@
                 }
             };
 
-
             let arr = ["nikh@gmail.com", "shre@gmail.com"]
             for (i = 0; i < arr.length; i++) {
                 let option = document.createElement("option");
@@ -123,21 +127,23 @@
                 let email = document.getElementById("input-email-collab").value;
 
                 var http = new XMLHttpRequest();   // new HttpRequest instance 
-                http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqlist");
+                http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqlistothers");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                http.send(JSON.stringify({ "email": email.value }));
+                http.setRequestHeader("Authorization", localStorage.getItem("token"))
+                http.send(JSON.stringify({ email }));
                 http.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4) {
+                    for(i=0; i<arr.length; i++){
                         let div = document.createElement("div");
                         div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
                         let div1 = document.createElement("div");
                         div1.setAttribute("class", "div1-attribute")
                         let content = document.createTextNode(text.value);
-                        span.appendChild(img);
                         div1.appendChild(content);
-                        div1.appendChild(span);
                         div.appendChild(div1);
                         document.getElementById("task-list").appendChild(div);
+                    }
+                        
                     }
 
                 }

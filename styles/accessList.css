@@ -28,10 +28,53 @@ button:focus {
     top: 50%; 
     transform: translateY(-50%)
 }
-.text-input{
-    text-align:center;
+input{
+    width:60%;
+    padding: 5px 20px;
     margin-top:50px;
-    font-family: 'Barlow', sans-serif;
+    color:black;
+    display: inline-block;
     font-size:20px;
+    height:55px;
+    text-decoration:none;
+    border-radius:40px;
+    border:2px solid lightblue;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+input:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+}
+#task-list {
+    height: 500px;
+    overflow-y: scroll;
+}
+.text-input{
+    margin-top:80px;
+    text-align:center;
+    font-size:30px;
+    font-family: 'Barlow', sans-serif;
     margin-bottom:20px;
+}
+.div1-attribute{
+    position: relative;
+    height : auto;
+    word-break : break-all; 
+    padding: 10px 40px 10px 20px;
+    font-size:20px; 
+    font-weight:bolder; 
+    border:2px solid transparent; 
+    box-shadow:0 0 10px 0 rgba(0,0,0,.30); 
+    border-radius:40px; 
+    width:100%"
+}
+.get-list-btn{
+    width:auto;
+    color:black;
+    padding:5px 50px;
+    border-radius:40px;
+    border:2px solid;
+    background-color: white;
+    font-size:20px;
+    cursor: pointer
 }
