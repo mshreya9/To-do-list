@@ -47,7 +47,6 @@ input:hover{
 }
 #task-list {
     height: 500px;
-    overflow-y: scroll;
 }
 .text-input{
     margin-top:80px;
