@@ -61,3 +61,8 @@ input:hover{
     background-color: #0a0a4d;
     transition: 0.5s;
 }
+.modify-text{
+    text-align:center;
+    margin-top:50px;
+    font-family:'Barlow', sans-serif;
+}
