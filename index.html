@@ -8,18 +8,23 @@
     <meta name="description" content="Advanced to-do list">
     <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></noscript>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-        
-<link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
-<link rel="stylesheet" href="./styles/login-signup.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/login-signup.css">
 
     <title>Sign up</title>
 </head>
 
-<body >
+<body>
     <!-- pop-up -->
     <div id="popup">
         <div style="text-align:center;">
@@ -39,7 +44,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="toggle-cover">
                     <div class="toggle-top"></div>
-                    <div class="toggle-mid"></div> 
+                    <div class="toggle-mid"></div>
                     <div class="toggle-mid"></div>
                     <div class="toggle-bottom"></div>
                 </div>
@@ -50,7 +55,7 @@
                         <a class="nav-link" href="about.html">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">The Product</a> 
+                        <a class="nav-link" href="#">The Product</a>
                     </li>
                 </ul>
             </div>
@@ -75,10 +80,11 @@
                         </div>
                         <div>
                             <input aria-label="Password" id="passwd" placeholder="Password" type="password">
-                        </label>
+                            </label>
                         </div>
                         <div style=" position:relative;">
-                            <img id="loader" src="assets/test.svg" alt="Loader" style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
+                            <img id="loader" src="assets/test.svg" alt="Loader"
+                                style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display:none;">
                             <input class="signup-button" type="submit" value="Signup">
                         </div>
                     </div>
@@ -110,13 +116,11 @@
                     status.push("false");
                     name.style.borderColor = "red";
                     name.placeholder = "Please enter a valid input!";
-
                 }
                 else {
                     name.style.borderColor = "green";
                     status.push("true");
                 }
-
 
                 let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (reg.test(email.value.trim())) {
@@ -139,48 +143,46 @@
                     password.style.borderColor = "green";
                     status.push("true");
                 }
-
                 if (status.includes("false")) {
                     return false;
                 }
                 else {
-                    document.getElementById("loader").style.display="block";
-                    document.getElementsByClassName("signup-button")[0].style.value="";
-                    document.getElementsByClassName("signup-button")[0].style.backgroundColor="#0a0a4d";
-                    document.getElementsByClassName("signup-button")[0].style.color="#0a0a4d";
+                    document.getElementById("loader").style.display = "block";
+                    document.getElementsByClassName("signup-button")[0].style.value = "";
+                    document.getElementsByClassName("signup-button")[0].style.backgroundColor = "#0a0a4d";
+                    document.getElementsByClassName("signup-button")[0].style.color = "#0a0a4d";
                     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
                     xmlhttp.open("POST", "https://keepnnote.herokuapp.com/auth/signup");
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                     xmlhttp.send(JSON.stringify({ "name": name.value, "email": email.value, "password": password.value }));
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            if("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
-                                document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
-                                document.getElementsByClassName("signup-button")[0].style.color="black";
-                                document.getElementById("loader").style.display="none";
-                                document.getElementById("error").style.visibility="visible";
-                                document.getElementById('error').innerHTML= "There was some error signing you up:<";
+                            if ("There was an error validating your email id" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementsByClassName("signup-button")[0].style.value = "Sign Up";
+                                document.getElementsByClassName("signup-button")[0].style.backgroundColor = "white";
+                                document.getElementsByClassName("signup-button")[0].style.color = "black";
+                                document.getElementById("loader").style.display = "none";
+                                document.getElementById("error").style.visibility = "visible";
+                                document.getElementById('error').innerHTML = "There was some error signing you up:<";
                                 return true;
                             }
-                            else if("The given email id is already registered with us"== JSON.parse(xmlhttp.responseText).message){
-                                document.getElementsByClassName("signup-button")[0].style.value="Sign Up";
-                                document.getElementsByClassName("signup-button")[0].style.backgroundColor="white";
-                                document.getElementsByClassName("signup-button")[0].style.color="black";
-                                document.getElementById("loader").style.display="none";
-                                document.getElementById("error").style.visibility="visible";
+                            else if ("The given email id is already registered with us" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementsByClassName("signup-button")[0].style.value = "Sign Up";
+                                document.getElementsByClassName("signup-button")[0].style.backgroundColor = "white";
+                                document.getElementsByClassName("signup-button")[0].style.color = "black";
+                                document.getElementById("loader").style.display = "none";
+                                document.getElementById("error").style.visibility = "visible";
                                 document.getElementById("error").innerHTML = "The given email id is already registered with us"
                                 return true;
                             }
-                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message){
-                                document.getElementById("main-page").style.opacity="0.1";
+                            else if ("You were successfully signed up" == JSON.parse(xmlhttp.responseText).message) {
+                                document.getElementById("main-page").style.opacity = "0.1";
                                 document.getElementById("popup-img").setAttribute("src", "./assets/gif-success.gif");
                                 document.getElementById("popup-text").innerHTML = "You are successfully signed up \n Redirecting...";
-                                document.getElementById("popup").style.display="block";
-                                setTimeout(function(){window.location.href="login.html"},4500);
+                                document.getElementById("popup").style.display = "block";
+                                setTimeout(function () { window.location.href = "login.html" }, 4500);
                                 return true;
                             }
-                       
                         }
                     };
                 }

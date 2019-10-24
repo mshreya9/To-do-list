@@ -3,14 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/home.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Advanced to-do list">
+    <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <title>Home page</title>
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/home.css">
+
+    <title>Home-private list</title>
 </head>
 
 <body>
@@ -42,7 +53,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="public-list.html">Public List</a>
-                        <a class="dropdown-item" href="#">Access List</a>
+                        <a class="dropdown-item" href="accessList.html">Access List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
                 </li>
@@ -58,7 +69,6 @@
                         <span id="name"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" id="logout" href="#">Logout</a>
                     </div>
                 </li>
@@ -84,7 +94,6 @@
     </div>
 
     <!-- Plus sign code -->
-
 
     <div class="container-fluid">
         <div class="row">
@@ -137,7 +146,7 @@
             xmlhttpsecond.onreadystatechange = function () {
                 if (xmlhttpsecond.readyState == 4) {
                     let arr = JSON.parse(xmlhttpsecond.responseText).list;
-                    for(i = 0; i < arr.length; i++){
+                    for (i = 0; i < arr.length; i++) {
                         let div = document.createElement("div");
                         div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
                         let div1 = document.createElement("div");
@@ -203,14 +212,13 @@
                                 xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/private/dellist");
                                 xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText )}));
+                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText) }));
                                 xmlhttp.onreadystatechange = function () { }
                                 e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
                             })
                             document.getElementById("task-list").appendChild(div);
                         }
                     }
-
                 }
             })
 
