@@ -84,7 +84,7 @@
         </div>
     </div>
 
-    <div id="list"></div>
+    <div id="task-list"></div>
 
 
     <script src="./scripts/navbar.js"></script>
@@ -114,26 +114,33 @@
 
 
             let arr = ["nikh@gmail.com", "shre@gmail.com"]
-            for(i = 0; i < arr.length; i++){
+            for (i = 0; i < arr.length; i++) {
                 let option = document.createElement("option");
                 option.setAttribute("value", arr[i]);
                 document.getElementById("email-collab").appendChild(option);
             }
-            // btn click hone pe 
-            document.getElementById("get-list-btn").addEventListener("click", (e) => {
-                // input box ki value ko
-                let email = document.getElementById("email-collab")
-                // backend pe ajax call 
-                var http = new XMLHttpRequest();
-                http.open("POST", "https://keepnnote.herokuapp.com/secure/getname"); // change
+            document.getElementById("get-list-btn").addEventListener("click", function (e) {
+                let email = document.getElementById("input-email-collab").value;
+
+                var http = new XMLHttpRequest();   // new HttpRequest instance 
+                http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqlist");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                http.setRequestHeader("Authorization", localStorage.getItem("token"));
                 http.send(JSON.stringify({ "email": email.value }));
                 http.onreadystatechange = function () {
-                    if (http.readyState == 4) {
-                        
-                    }  
-                };
+                    if (xmlhttp.readyState == 4) {
+                        let div = document.createElement("div");
+                        div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                        let div1 = document.createElement("div");
+                        div1.setAttribute("class", "div1-attribute")
+                        let content = document.createTextNode(text.value);
+                        span.appendChild(img);
+                        div1.appendChild(content);
+                        div1.appendChild(span);
+                        div.appendChild(div1);
+                        document.getElementById("task-list").appendChild(div);
+                    }
+
+                }
             })
 
 
