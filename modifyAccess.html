@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Advanced to-do list">
+    <meta name="author" content="Shreya Maheshwari">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/modifyAccess.css">
+
+    <title>Modify Access</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="toggle-cover">
+                <div class="toggle-top"></div>
+                <div class="toggle-mid"></div>
+                <div class="toggle-mid"></div>
+                <div class="toggle-bottom"></div>
+            </div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="navbar-item">Home</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Shared Lists
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="public-list.html">Public List</a>
+                        <a class="dropdown-item" href="accessList.html">Access List</a>
+                        <a class="dropdown-item" href="#">Modify Access</a>
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto" style="margin-right : 5vw; position: relative">
+                <li class="nav-item active">
+                    <img src="./assets/useravatar.png" href="#" id="avatar">
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbar-item" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span id="name"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="logout" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="text-align:center;">
+            <div class="col-12 col-lg-6" style="margin-top:50px;">
+                <input id="modify-add-email" type="email" placeholder="Enter the user's Email">
+                <br>
+                <button class="add-email-btn" type="button" value="Add user"></button>
+            </div>
+            <div class="col-12 col-lg-6" style="margin-top:50px;">
+                <input id="modify-delete-email" type="email" placeholder="Enter the user's email">
+                <br>
+                <button class="del-email-btn" type="button" value="Delete user"></button>
+            </div>
+        </div>
+
+        <div class="row" style="text-align:center">
+            <div class="col-12 col-lg-4"></div>
+            <div class="col-12 col-lg-4" style="margin-top:150px;">
+                <div class="col-12 col-lg-4"></div>
+                <button class="view-userlist" type="button" placeholder="View list"></button>
+
+            </div>
+            <div class="col-12 col-lg-4"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="./scripts/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+</body >

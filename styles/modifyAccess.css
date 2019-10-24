@@ -1,0 +1,63 @@
+#navbar-item{
+    padding-top:10px;
+    padding-bottom:10px;
+    font-family:'Barlow', sans-serif;
+    font-size:20px;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+#shadow{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+}
+#navbar-item-1{
+    font-family:'Barlow', sans-serif;
+    font-size:20px;
+}
+.nav-item {
+    padding-left : 10px;
+    padding-right : 10px
+}
+#avatar {
+    height:40px; 
+    position: absolute; 
+    left : -20%; 
+    top: 50%; 
+    transform: translateY(-50%)
+}
+input{
+    width:40%;
+    padding: 5px 20px;
+    margin-top:50px;
+    color:black;
+    display: inline-block;
+    font-size:20px;
+    height:55px;
+    text-decoration:none;
+    border-radius:40px;
+    border:2px solid lightblue;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+input:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+}
+.add-email-btn, .del-email-btn, .view-userlist{
+    width:auto;
+    color:black;
+    padding:5px 50px;
+    border-radius:40px;
+    border:2px solid;
+    background-color: white;
+    font-size:20px;
+    cursor: pointer
+}
+.add-email-btn:hover, .del-email-btn:hover, .view-userlist:hover{
+    color:white;
+    border:2px solid #0a0a4d;
+    background-color: #0a0a4d;
+    transition: 0.5s;
+}
