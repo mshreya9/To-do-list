@@ -8,16 +8,22 @@
     <meta name="description" content="Advanced to-do list">
     <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></noscript>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-        
-<link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
-<link rel="stylesheet" href="./styles/accessList.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/accessList.css">
 
     <title>Access List</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
         <a class="navbar-brand" href="#"></a>
@@ -63,7 +69,6 @@
                         <span id="name"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
@@ -90,7 +95,6 @@
     </div>
 
     <div id="task-list"></div>
-
 
     <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -133,23 +137,20 @@
                 http.send(JSON.stringify({ email }));
                 http.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4) {
-                    for(i=0; i<arr.length; i++){
-                        let div = document.createElement("div");
-                        div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
-                        let div1 = document.createElement("div");
-                        div1.setAttribute("class", "div1-attribute")
-                        let content = document.createTextNode(text.value);
-                        div1.appendChild(content);
-                        div.appendChild(div1);
-                        document.getElementById("task-list").appendChild(div);
-                    }
-                        
-                    }
+                        for (i = 0; i < arr.length; i++) {
+                            let div = document.createElement("div");
+                            div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                            let div1 = document.createElement("div");
+                            div1.setAttribute("class", "div1-attribute")
+                            let content = document.createTextNode(text.value);
+                            div1.appendChild(content);
+                            div.appendChild(div1);
+                            document.getElementById("task-list").appendChild(div);
+                        }
 
+                    }
                 }
             })
-
-
         }
     </script>
 

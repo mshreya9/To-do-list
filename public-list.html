@@ -8,13 +8,18 @@
     <meta name="description" content="Advanced to-do list">
     <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></noscript>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-        
-<link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
-<link rel="stylesheet" href="./styles/home.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/home.css">
 
     <title>Public List</title>
 </head>
@@ -64,7 +69,6 @@
                         <span id="name"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" id="logout" href="#">Logout</a>
                     </div>
                 </li>
@@ -90,7 +94,6 @@
     </div>
 
     <!-- Plus sign code -->
-
 
     <div class="container-fluid">
         <div class="row">
@@ -143,7 +146,7 @@
             xmlhttpsecond.onreadystatechange = function () {
                 if (xmlhttpsecond.readyState == 4) {
                     let arr = JSON.parse(xmlhttpsecond.responseText).list;
-                    for(i = 0; i < arr.length; i++){
+                    for (i = 0; i < arr.length; i++) {
                         let div = document.createElement("div");
                         div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
                         let div1 = document.createElement("div");
@@ -209,7 +212,7 @@
                                 xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/dellist");
                                 xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText )}));
+                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText) }));
                                 xmlhttp.onreadystatechange = function () { }
                                 e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
                             })
