@@ -10,7 +10,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <title>Access List One</title>
+    <title>Access List</title>
 </head>
 
 <body>
@@ -66,16 +66,26 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12" style="padding:0vw 5vw">
+        <div class="row" style="padding:0vw 5vw">
+            <div class="col-12">
                 <div class="text-input">
                     <h1>Access List</h1>
                 </div>
             </div>
+            <div class="col-3 col-lg-4"></div>
+            <div class="col-6 col-lg-4" style="text-align: center;">
+                <input list="email-collab" id="input-email-collab">
+                <datalist id="email-collab">
+                </datalist>
+                <input type="button" class="get-list-btn" value="Show List">
+            </div>
+            <div class="col-3 col-lg-4"></div>
+
         </div>
     </div>
 
     <div id="list"></div>
+
 
     <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -102,15 +112,31 @@
                 }
             };
 
-            let arr = ["s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com"];
-            for (i = 0; i < arr.length; i++) {
-                let div = document.createElement("div");
-                let text = document.createTextNode(arr[i]);
-                div.setAttribute("style", "padding : 10px 15px; margin : 20px; background-color : #0a0a4d ; color : white; width : auto; display : inline-block; border-radius : 10px; cursor : pointer");
-                div.appendChild(text);
-                document.getElementById("list").appendChild(div);
-                
-            }  
+
+            let arr = ["nikh@gmail.com", "shre@gmail.com"]
+            for(i = 0; i < arr.length; i++){
+                let option = document.createElement("option");
+                option.setAttribute("value", arr[i]);
+                document.getElementById("email-collab").appendChild(option);
+            }
+            // btn click hone pe 
+            document.getElementById("get-list-btn").addEventListener("click", (e) => {
+                // input box ki value ko
+                let email = document.getElementById("email-collab")
+                // backend pe ajax call 
+                var http = new XMLHttpRequest();
+                http.open("POST", "https://keepnnote.herokuapp.com/secure/getname"); // change
+                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                http.setRequestHeader("Authorization", localStorage.getItem("token"));
+                http.send(JSON.stringify({ "email": email.value }));
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4) {
+
+                    }
+                };
+            })
+
+
         }
     </script>
 
