@@ -4,6 +4,12 @@
     font-family:'Barlow', sans-serif;
     font-size:20px;
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 #shadow{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
 }
