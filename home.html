@@ -71,6 +71,7 @@
             <div class="col-12 col-lg-6" style="padding:0vw 5vw">
                 <div class="text-input">
                     <h1>Jot Down</h1>
+                    <h4>Private List</h4>
                 </div>
                 <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
                     id="jot-down"></textarea>
@@ -204,7 +205,7 @@
                                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                                 xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText )}));
                                 xmlhttp.onreadystatechange = function () { }
-                                e.target.parentNode.parentNode.parentNode.remove();
+                                e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
                             })
                             document.getElementById("task-list").appendChild(div);
                         }
@@ -214,7 +215,7 @@
             })
 
             document.getElementById("logout").addEventListener("click", (e) => {
-                localStorage.removeItem("token");
+                localStorage.removeItem("token"); // token is removed so its value is null and hence so no saved lists.
             })
         }
     </script>

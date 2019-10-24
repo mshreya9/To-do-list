@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/accessList.css">
+    <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <title>Access List</title>
+    <title>Access List One</title>
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                         Shared Lists
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="home.css">Private List</a>
+                        <a class="dropdown-item" href="home.html">Public List</a>
                         <a class="dropdown-item" href="#">Access List</a>
                         <a class="dropdown-item" href="#">Modify Access</a>
                     </div>
@@ -64,6 +65,15 @@
             </ul>
         </div>
     </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="padding:0vw 5vw">
+                <div class="text-input">
+                    <h1>Access List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="list"></div>
 
@@ -79,12 +89,24 @@
         crossorigin="anonymous"></script>
 
     <script>
-        window.onload = function() {
-            let arr = ["s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com","s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com","s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com"];
-            for(i = 0; i < arr.length; i++){
+        window.onload = function () {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/getname");
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token"));
+            xmlhttp.send();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    console.log(xmlhttp.responseText)
+                    document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
+                }
+            };
+
+            let arr = ["s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com", "s@gmail.com", "n@gmail.com"];
+            for (i = 0; i < arr.length; i++) {
                 let div = document.createElement("div");
                 let text = document.createTextNode(arr[i]);
-                div.setAttribute("style", "padding : 10px 15px; margin : 20px; background-color : blue; color : white; width : auto; display : inline-block; border-radius : 10px; cursor : pointer");
+                div.setAttribute("style", "padding : 10px 15px; margin : 20px; background-color : #0a0a4d ; color : white; width : auto; display : inline-block; border-radius : 10px; cursor : pointer");
                 div.appendChild(text);
                 document.getElementById("list").appendChild(div);
             }
