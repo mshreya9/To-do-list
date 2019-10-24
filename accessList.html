@@ -12,7 +12,7 @@
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        </noscript>
+    </noscript>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
@@ -77,24 +77,55 @@
     </nav>
     <div class="container-fluid">
         <div class="row" style="padding:0vw 5vw">
-            <div class="col-12">
-                <div class="text-input">
-                    <h1>Access List</h1>
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-input">
+                            <h1>Access List</h1>
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-2"></div>
+                    <div class="col-6 col-lg-8" style="text-align: center;">
+                        <input list="email-collab" id="input-email-collab">
+                        <datalist id="email-collab">
+                        </datalist>
+                        <input type="button" class="get-list-btn" value="Show List">
+                    </div>
+                    <div class="col-3 col-lg-8"></div>
                 </div>
             </div>
-            <div class="col-3 col-lg-4"></div>
-            <div class="col-6 col-lg-4" style="text-align: center;">
-                <input list="email-collab" id="input-email-collab">
-                <datalist id="email-collab">
-                </datalist>
-                <input type="button" class="get-list-btn" value="Show List">
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-input">
+                            <h1>Suggest Changes?</h1>
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-2"></div>
+                    <div class="col-6 col-lg-8" style="text-align: center;">
+                        <textarea id="content"></textarea>
+                        <input type="button" class="suggest-changes" value="Suggest Changes">
+                        <div class="status">
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-8"></div>
+                </div>
             </div>
-            <div class="col-3 col-lg-4"></div>
+
 
         </div>
     </div>
 
-    <div id="task-list"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-12 col-lg-6" style="margin-top : 50px">
+                <div id="task-list"></div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+
 
     <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -109,6 +140,8 @@
 
     <script>
         window.onload = function () {
+
+            // XHR Get name
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/getname");
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -121,32 +154,66 @@
                 }
             };
 
-            let arr = ["nikh@gmail.com", "shre@gmail.com"]
-            for (i = 0; i < arr.length; i++) {
-                let option = document.createElement("option");
-                option.setAttribute("value", arr[i]);
-                document.getElementById("email-collab").appendChild(option);
-            }
-            document.getElementById("get-list-btn").addEventListener("click", function (e) {
-                let email = document.getElementById("input-email-collab").value;
+            // XHR get list of email of users who shared the list
+            var https = new XMLHttpRequest();
+            https.open("GET", "https://keepnnote.herokuapp.com/share/user/getuser");
+            https.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            https.setRequestHeader("Authorization", localStorage.getItem("token"));
+            https.send();
+            https.onreadystatechange = function () {
+                if (https.readyState == 4) {
+                    let arr = JSON.parse(https.responseText).list;
+                    console.log(JSON.parse(https.responseText).list)
+                    for (i = 0; i < arr.length; i++) {
+                        let option = document.createElement("option");
+                        option.setAttribute("value", arr[i]);
+                        document.getElementById("email-collab").appendChild(option);
+                    }
 
+                }
+            };
+
+            // XHR get the list of the particular user
+            document.getElementsByClassName("get-list-btn")[0].addEventListener("click", function (e) {
+                let email = document.getElementById("input-email-collab").value;
                 var http = new XMLHttpRequest();   // new HttpRequest instance 
-                http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqlistothers");
+                http.open("POST", "https://keepnnote.herokuapp.com/secure/public/getlistothers");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 http.setRequestHeader("Authorization", localStorage.getItem("token"))
                 http.send(JSON.stringify({ email }));
                 http.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4) {
+                    if (http.readyState == 4) {
+                        console.log(JSON.parse(http.responseText).list)
+                        document.getElementById("task-list").innerHTML = "";
+                        let arr = JSON.parse(http.responseText).list;
                         for (i = 0; i < arr.length; i++) {
                             let div = document.createElement("div");
                             div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
                             let div1 = document.createElement("div");
                             div1.setAttribute("class", "div1-attribute")
-                            let content = document.createTextNode(text.value);
+                            let content = document.createTextNode(arr[i]);
                             div1.appendChild(content);
                             div.appendChild(div1);
                             document.getElementById("task-list").appendChild(div);
                         }
+
+                    }
+                }
+            })
+
+            // to suggest changes
+            document.getElementsByClassName("suggest-changes")[0].addEventListener("click", () => {
+                var http = new XMLHttpRequest();   // new HttpRequest instance 
+                http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqchange");
+                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                http.setRequestHeader("Authorization", localStorage.getItem("token"))
+                console.log({ "email" : document.getElementById("input-email-collab").value, "content" :  document.getElementById("content").value })
+                http.send(JSON.stringify({ "email" : document.getElementById("input-email-collab").value, "content" :  document.getElementById("content").value }));
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4) {
+                        console.log(JSON.parse(http.responseText))
+                        document.getElementsByClassName("status")[0].innerHTML = JSON.parse(http.responseText).message;
+                        document.getElementsByClassName("status")[0].style.display = "block"
 
                     }
                 }
