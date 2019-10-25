@@ -86,7 +86,8 @@ textarea{
     height : 150px;
     font-size : 18px;
     padding : 20px 30px;
-    width : 100%
+    width : 100%;
+    border-radius: 20px;
 }
 
 .status {

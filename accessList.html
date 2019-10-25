@@ -25,8 +25,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
-        <a class="navbar-brand" href="#"></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white " id="shadow">
+        <a class="navbar-brand" href="index.html">
+            <img src="./assets/navbar-logo.png" style="width:60px">
+            <span>Keep Notes</span>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="toggle-cover">
@@ -39,8 +42,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="navbar-item">Home</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="home.html" id="navbar-item">Home</a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
@@ -49,7 +52,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="public-list.html">Public List</a>
-                        <a class="dropdown-item" href="#">Access List</a>
+                        <a class="dropdown-item" href="accessList.html">Access List</a>
                         <a class="dropdown-item" href="modifyAccess.html">Modify Access</a>
                     </div>
                 </li>
@@ -64,7 +67,7 @@
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span id="name"></span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" id="logout" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
@@ -100,7 +103,7 @@
                     <div class="col-3 col-lg-2"></div>
                     <div class="col-6 col-lg-8" style="text-align: center;">
                         <textarea id="content"></textarea>
-                        <input type="button" class="suggest-changes" value="Suggest Changes">
+                        <input type="button" class="suggest-changes" style="min-width : 200px" value="Suggest Changes">
                         <div class="status">
                         </div>
                     </div>

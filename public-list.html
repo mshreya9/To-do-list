@@ -26,7 +26,10 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="index.html">
+                <img src="./assets/navbar-logo.png" id="logo-top" alt="Keep Notes" style="width:60px">
+                Keep Notes
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="toggle-cover">
@@ -40,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navbar-item">Home</a>
+                    <a class="nav-link" href="home.html" id="navbar-item">Home</a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
@@ -48,7 +51,7 @@
                         Shared Lists
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Public List</a>
+                        <a class="dropdown-item" href="public-list.html">Public List</a>
                         <a class="dropdown-item" href="accessList.html">Access List</a>
                         <a class="dropdown-item" href="modifyAccess.html">Modify Access</a>
                     </div>
@@ -74,13 +77,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-6" style="padding:0vw 5vw">
+            <div class="col-12 col-lg-6" style="padding:0vw 5vw; text-align : center">
                 <div class="text-input">
                     <h1>Jot Down</h1>
                     <h4>Public List</h4>
                 </div>
                 <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
                     id="jot-down"></textarea>
+                <input class="add-list-btn" id="plus-btn" type="button" value="Add to list">
+
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
@@ -89,23 +94,6 @@
         </div>
     </div>
 
-    <!-- Plus sign code -->
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-6" style=" position:relative;" id="plus-btn">
-                <div
-                    style="position:absolute; border-radius:50%; width:50px; height:50px; border:2px solid white; box-shadow: 0 0 10px 0 rgba(0,0,0,0.9); right : 0">
-                    <div
-                        style="position:absolute; width:0px; height:50px; border:2px solid #0a0a4d; transform:translateX(22px);">
-                        <div
-                            style="position:absolute; width:50px; height:0px; border:2px solid #0a0a4d; transform:translate(-26px,21px);">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -151,9 +139,10 @@
                         let img = document.createElement("img");
                         img.setAttribute("class", "img-attribute");
                         img.setAttribute("src", "./assets/cross.svg");
-                        let content = document.createTextNode(arr[i]);
+                        let content = document.createTextNode(arr[i].trim());
                         span.appendChild(img);
                         div1.appendChild(content);
+                        div1.setAttribute("text",arr[i].trim() )
                         div1.appendChild(span);
                         div.appendChild(div1);
                         span.firstElementChild.addEventListener('click', function (e) {
@@ -161,7 +150,7 @@
                             xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/dellist");
                             xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                            xmlhttp.send(JSON.stringify({ "remove": e.target.parentNode.parentNode.innerText }));
+                            xmlhttp.send(JSON.stringify({ "remove": e.target.parentNode.parentNode.getAttribute("text") }));
                             xmlhttp.onreadystatechange = function () { }
                             e.target.parentNode.parentNode.parentNode.remove();
                         })
@@ -187,7 +176,8 @@
                     xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/addlist");
                     xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                    xmlhttp.send(JSON.stringify({ "list": text.value }));
+                    console.log(text.value.trim())
+                    xmlhttp.send(JSON.stringify({ "list": text.value.trim() }));
                     // giving XHR call first then adding it to the DOM when successful
                     xmlhttp.onreadystatechange = function () {
                         if (xmlhttp.readyState == 4) {
@@ -199,16 +189,19 @@
                             let img = document.createElement("img");
                             img.setAttribute("class", "img-attribute");
                             img.setAttribute("src", "./assets/cross.svg");
-                            let content = document.createTextNode(text.value);
+                            console.log(text.value.trim())
+                            let content = document.createTextNode(text.value.trim());
                             span.appendChild(img);
                             div1.appendChild(content);
+                            div1.setAttribute("text",text.value.trim() )
                             div1.appendChild(span);
                             div.appendChild(div1);
+                            document.getElementsByTagName("textarea")[0].value = "";
                             span.firstElementChild.addEventListener('click', function (e) {
                                 xmlhttp.open("POST", "https://keepnnote.herokuapp.com/secure/public/dellist");
                                 xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
                                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.innerText) }));
+                                xmlhttp.send(JSON.stringify({ "remove": (e.target.parentNode.parentNode.getAttribute("text")) }));
                                 xmlhttp.onreadystatechange = function () { }
                                 e.target.parentNode.parentNode.parentNode.remove(); //call-back fxn (will execute only when plus button is clicked)
                             })

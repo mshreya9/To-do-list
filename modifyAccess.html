@@ -13,7 +13,6 @@
     <noscript>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </noscript>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
@@ -26,8 +25,11 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
-        <a class="navbar-brand" href="#"></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white " id="shadow">
+        <a class="navbar-brand" href="index.html">
+                <img src="./assets/navbar-logo.png" style="width:60px">
+                <span>Keep Notes</span>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="toggle-cover">
@@ -41,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navbar-item">Home</a>
+                    <a class="nav-link" href="home.html" id="navbar-item">Home</a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbar-item" id="navbarDropdown" role="button"
@@ -51,7 +53,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="public-list.html">Public List</a>
                         <a class="dropdown-item" href="accessList.html">Access List</a>
-                        <a class="dropdown-item" href="#">Modify Access</a>
+                        <a class="dropdown-item" href="modifyAccess.html">Modify Access</a>
                     </div>
                 </li>
 
@@ -77,16 +79,22 @@
         <div class="row">
             <div class="col-12 modify-text">
                 <h2>Modify Access</h2>
+            </div>   
+            <div class="col-2 col-lg-3"></div>
+            <div class="col-8 col-lg-6" id="status" style="display: none; margin-top: 20px;width : auto; border-radius : 15px; font-size : 15px; padding : 10px 15px; border : 2px solid green; ">
+                
             </div>
+            <div class="col-2 col-lg-3"></div>
+
         </div>
 
         <div class="row" style="text-align:center;">
-            <div class="col-12 col-lg-6" style="margin-top:50px;">
+            <div class="col-12 col-lg-6" style="margin-top:20px;">
                 <input id="modify-add-email" type="email" placeholder="Enter the user's Email">
                 <br>
                 <input class="add-email-btn" type="button" value="Add user">
             </div>
-            <div class="col-12 col-lg-6" style="margin-top:50px;">
+            <div class="col-12 col-lg-6" style="margin-top:20px;">
                 <input id="modify-delete-email" type="email" placeholder="Enter the user's email">
                 <br>
                 <input class="del-email-btn" type="button" value="Delete user">
@@ -103,7 +111,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom : 100px">
         <div class="row">
             <div class="col-lg-3"></div>
             <div class="col-12 col-lg-6" style="margin-top : 50px">
@@ -152,7 +160,8 @@
                 http.send(JSON.stringify({ "list": email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText).message)
+                        document.getElementById("status").style.display = "block"
+                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message
                     }
                 }
             })
@@ -167,7 +176,8 @@
                 http.send(JSON.stringify({ "remove": email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText).message)
+                        document.getElementById("status").style.display = "block"
+                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message
                     }
                 }
             })
@@ -200,7 +210,7 @@
             document.getElementById("logout").addEventListener("click", () => {
                 localStorage.removeItem("token");
                 window.location.href = "login.html";
-            }
+            })
             
         }
     </script>

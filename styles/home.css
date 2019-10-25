@@ -109,3 +109,21 @@ input{
 input:hover{
     box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
+
+.add-list-btn{
+    width:auto;
+    outline: none;
+    color:black;
+    padding:5px 50px;
+    border-radius:40px;
+    border:2px solid;
+    background-color: white;
+    font-size:20px;
+    cursor: pointer
+}
+.add-list-btn:hover{
+    color:white;
+    border:2px solid #0a0a4d;
+    background-color: #0a0a4d;
+    transition: 0.5s;
+}
