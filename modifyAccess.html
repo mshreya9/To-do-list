@@ -198,20 +198,13 @@
             })
 
             // logout btn on click
-            // clean the token from localstorage --> localStorage.removeItem("token")
+            // clean the token from localstorage
             // redirect to login page
 
             document.getElementById("logout").addEventListener("click", () => {
-                var http = new XMLHttpRequest();
-                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                http.setRequestHeader("Authorization", localStorage.removeItem("token"));
-                http.send();
-                http.onreadystatechange = function () {
-                    window.location.href = "login.html";
-                }
-                
-            }
-            
+                localstorage.removeItem("token");
+                window.location.href = "login.html";
+            })
         }
     </script>
 
