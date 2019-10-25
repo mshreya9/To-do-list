@@ -134,7 +134,7 @@
 
             var xmlhttpsecond = new XMLHttpRequest();
             let text = document.getElementById("jot-down");
-            xmlhttpsecond.open("GET", "https://keepnnote.herokuapp.com/secure/public/getlist");
+            xmlhttpsecond.open("POST", "https://keepnnote.herokuapp.com/secure/public/getlist");
             xmlhttpsecond.setRequestHeader("Authorization", localStorage.getItem("token")); //private list is specific to a person, we pass token to uniqely identify logged in user.
             xmlhttpsecond.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xmlhttpsecond.send();
