@@ -196,14 +196,11 @@
                 }
             })
 
-            // logout btn on click
-            // clean the token from localstorage
-            // redirect to login page
-
             document.getElementById("logout").addEventListener("click", () => {
-                localstorage.removeItem("token");
+                localStorage.removeItem("token");
                 window.location.href = "login.html";
-            })
+            }
+            
         }
     </script>
 
