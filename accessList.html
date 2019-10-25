@@ -203,8 +203,8 @@
                 http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqchange");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 http.setRequestHeader("Authorization", localStorage.getItem("token"))
-                console.log({ "email" : document.getElementById("input-email-collab").value, "content" :  document.getElementById("content").value })
-                http.send(JSON.stringify({ "email" : document.getElementById("input-email-collab").value, "content" :  document.getElementById("content").value }));
+                console.log({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value })
+                http.send(JSON.stringify({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
                         console.log(JSON.parse(http.responseText))
@@ -213,6 +213,11 @@
 
                     }
                 }
+            })
+
+            document.getElementById("logout").addEventListener("click", () => {
+                localstorage.removeItem("token");
+                window.location.href = "login.html";
             })
         }
     </script>

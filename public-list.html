@@ -221,6 +221,7 @@
 
             document.getElementById("logout").addEventListener("click", (e) => {
                 localStorage.removeItem("token"); // token is removed so its value is null and hence so no saved lists.
+                window.location.href="login.html";
             })
         }
     </script>
