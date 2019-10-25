@@ -8,13 +8,18 @@
     <meta name="description" content="Advanced to-do list">
     <meta name="author" content="Shreya Maheshwari">
     <link rel="stylesheet" href="./styles/navbar.css">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></noscript>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-        
-<link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
-<link rel="stylesheet" href="./styles/login-signup.css">
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </noscript>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
+    <link rel="stylesheet" href="./styles/login-signup.css">
 
     <title>Login</title>
 </head>
@@ -38,7 +43,7 @@
                 style="margin-top: 20px">
         </div>
         <div style="text-align:center; position: relative;">
-                <img id="load" src="assets/test.svg"
+            <img id="load" src="assets/test.svg"
                 style="width:50px; height:auto; position:absolute; left:50%; bottom:3%; transform:translateX(-50%); display: none ">
 
             <input type="button" class="send-btn" value="Send" style="margin-top:20px;">
@@ -123,11 +128,11 @@
         window.onload = function () {
             document.getElementsByClassName("login-button")[0].addEventListener('click', function (event) {
 
-        
+
                 let username = document.getElementById("email");
                 let password = document.getElementById("passwd");
 
-              
+
                 let status = [];
 
                 if (username.value.trim().length == 0) {
@@ -195,7 +200,7 @@
                 document.getElementById("popup").style.display = "block";
             })
 
-            document.getElementById("close-btn").addEventListener("click", function(){
+            document.getElementById("close-btn").addEventListener("click", function () {
                 document.getElementById("main-page").style.opacity = "1.0";
                 document.getElementById("popup").style.display = "none";
             })
