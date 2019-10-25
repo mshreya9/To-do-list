@@ -161,7 +161,7 @@
                     if (http.readyState == 4) {
                         document.getElementById("status").style.display = "block";
                         document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
-                        document.getElementsByClassName("add-email-btn").value = "";
+                        document.getElementById("modify-add-email").value = "";
                     }
                 }
             })
@@ -178,7 +178,7 @@
                     if (http.readyState == 4) {
                         document.getElementById("status").style.display = "block";
                         document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
-                        document.getElementsByClassName("del-email-btn").value = "";
+                        document.getElementById("modify-delete-email").value = "";
                     }
                 }
             })
