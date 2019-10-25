@@ -159,8 +159,9 @@
                 http.send(JSON.stringify({ "list": email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        document.getElementById("status").style.display = "block"
-                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message
+                        document.getElementById("status").style.display = "block";
+                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
+                        document.getElementsByClassName("add-email-btn").value = "";
                     }
                 }
             })
@@ -175,8 +176,9 @@
                 http.send(JSON.stringify({ "remove": email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        document.getElementById("status").style.display = "block"
-                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message
+                        document.getElementById("status").style.display = "block";
+                        document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
+                        document.getElementsByClassName("del-email-btn").value = "";
                     }
                 }
             })
