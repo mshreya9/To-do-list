@@ -12,7 +12,7 @@
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        </noscript>
+    </noscript>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
@@ -221,7 +221,7 @@
 
             document.getElementById("logout").addEventListener("click", (e) => {
                 localStorage.removeItem("token"); // token is removed so its value is null and hence so no saved lists.
-                window.location.href="login.html";
+                window.location.href = "login.html";
             })
         }
     </script>
