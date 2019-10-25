@@ -66,3 +66,15 @@ input:hover{
     margin-top:50px;
     font-family:'Barlow', sans-serif;
 }
+.div1-attribute{
+    position: relative;
+    height : auto;
+    word-break : break-all; 
+    padding: 10px 40px 10px 20px;
+    font-size:20px; 
+    font-weight:bolder; 
+    border:2px solid transparent; 
+    box-shadow:0 0 10px 0 rgba(0,0,0,.30); 
+    border-radius:40px; 
+    width:100%"
+}

@@ -12,7 +12,7 @@
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        </noscript>
+    </noscript>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Barlow&display=swap" as="style"
@@ -79,7 +79,7 @@
                 <h2>Modify Access</h2>
             </div>
         </div>
-        
+
         <div class="row" style="text-align:center;">
             <div class="col-12 col-lg-6" style="margin-top:50px;">
                 <input id="modify-add-email" type="email" placeholder="Enter the user's Email">
@@ -103,6 +103,16 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-12 col-lg-6" style="margin-top : 50px">
+                <div id="task-list"></div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+
     <script src="./scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -113,6 +123,87 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+    <script>
+
+        window.onload = () => {
+
+            // XHR Get name
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "https://keepnnote.herokuapp.com/secure/getname");
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.setRequestHeader("Authorization", localStorage.getItem("token"));
+            xmlhttp.send();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    console.log(xmlhttp.responseText)
+                    document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
+                }
+            };
+
+            // to add user to the list
+            document.getElementsByClassName("add-email-btn")[0].addEventListener("click", () => {
+                let email = document.getElementById("modify-add-email").value;
+                var http = new XMLHttpRequest();   // new HttpRequest instance 
+                http.open("POST", "https://keepnnote.herokuapp.com/secure/public/adduser");
+                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                http.setRequestHeader("Authorization", localStorage.getItem("token"))
+                http.send(JSON.stringify({ "list": email }));
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4) {
+                        console.log(JSON.parse(http.responseText).message)
+                    }
+                }
+            })
+
+            // to delete user from the list
+            document.getElementsByClassName("del-email-btn")[0].addEventListener("click", () => {
+                let email = document.getElementById("modify-delete-email").value;
+                var http = new XMLHttpRequest();   // new HttpRequest instance 
+                http.open("POST", "https://keepnnote.herokuapp.com/secure/public/deluser");
+                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                http.setRequestHeader("Authorization", localStorage.getItem("token"))
+                http.send(JSON.stringify({ "remove": email }));
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4) {
+                        console.log(JSON.parse(http.responseText).message)
+                    }
+                }
+            })
+
+            // to get the list of users who have access to 
+            document.getElementsByClassName("view-userlist")[0].addEventListener("click", () => {
+                var http = new XMLHttpRequest();   // new HttpRequest instance 
+                http.open("GET", "https://keepnnote.herokuapp.com/share/user/getuser");
+                http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                http.setRequestHeader("Authorization", localStorage.getItem("token"))
+                http.send();
+                http.onreadystatechange = function () {
+                    if (http.readyState == 4) {
+                        document.getElementById("task-list").innerHTML = "";
+                        let arr = JSON.parse(http.responseText).list;
+                        ["shre......"]
+                        for (i = 0; i < arr.length; i++) {
+                            let div = document.createElement("div");
+                            div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
+                            let div1 = document.createElement("div");
+                            div1.setAttribute("class", "div1-attribute")
+                            let content = document.createTextNode(arr[i]);
+                            div1.appendChild(content);
+                            div.appendChild(div1);
+                            document.getElementById("task-list").appendChild(div);
+                        }
+                    }
+                }
+            })
+
+            // logout btn on click
+            // clean the token from localstorage --> localStorage.removeItem("token")
+            // redirect to login page
+            
+        }
+    </script>
 
 </body>
 
