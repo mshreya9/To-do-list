@@ -143,7 +143,6 @@
             xmlhttp.send();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
-                    console.log(xmlhttp.responseText)
                     document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
                 }
             };
@@ -161,6 +160,9 @@
                         document.getElementById("status").style.display = "block";
                         document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
                         document.getElementById("modify-add-email").value = "";
+                        setTimeout(() => {
+                            document.getElementById("status").style.display = "none";
+                        }, 3500)
                     }
                 }
             })
@@ -178,6 +180,9 @@
                         document.getElementById("status").style.display = "block";
                         document.getElementById("status").innerHTML = JSON.parse(http.responseText).message;
                         document.getElementById("modify-delete-email").value = "";
+                        setTimeout(() => {
+                            document.getElementById("status").style.display = "none";
+                        }, 3500)
                     }
                 }
             })
@@ -192,7 +197,7 @@
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
                         document.getElementById("task-list").innerHTML = "";
-                        let arr = JSON.parse(http.responseText).list;
+                        let arr = [...new Set(JSON.parse(http.responseText).list)]
                         for (i = 0; i < arr.length; i++) {
                             let div = document.createElement("div");
                             div.setAttribute("style", "margin-top : 10px; margin-bottom : 10px");
