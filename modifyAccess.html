@@ -184,7 +184,7 @@
             // to get the list of users who have access to 
             document.getElementsByClassName("view-userlist")[0].addEventListener("click", () => {
                 var http = new XMLHttpRequest();   // new HttpRequest instance 
-                http.open("GET", "https://keepnnote.herokuapp.com/share/user/getuser");
+                http.open("GET", "https://keepnnote.herokuapp.com/secure/public/getuser");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 http.setRequestHeader("Authorization", localStorage.getItem("token"))
                 http.send();
