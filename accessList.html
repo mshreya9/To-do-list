@@ -148,7 +148,6 @@
             xmlhttp.send();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
-                    console.log(xmlhttp.responseText)
                     document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
                 }
             };
@@ -161,8 +160,7 @@
             https.send();
             https.onreadystatechange = function () {
                 if (https.readyState == 4) {
-                    let arr = JSON.parse(https.responseText).list;
-                    console.log(JSON.parse(https.responseText).list)
+                    let arr = [...new Set(JSON.parse(https.responseText).list)];
                     for (i = 0; i < arr.length; i++) {
                         let option = document.createElement("option");
                         option.setAttribute("value", arr[i]);
@@ -182,7 +180,6 @@
                 http.send(JSON.stringify({ email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText).list)
                         document.getElementById("task-list").innerHTML = "";
                         let arr = JSON.parse(http.responseText).list;
                         for (i = 0; i < arr.length; i++) {
@@ -206,11 +203,9 @@
                 http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqchange");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 http.setRequestHeader("Authorization", localStorage.getItem("token"))
-                console.log({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value })
                 http.send(JSON.stringify({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText))
                         document.getElementsByClassName("status")[0].innerHTML = JSON.parse(http.responseText).message;
                         document.getElementsByClassName("status")[0].style.display = "block"
 
