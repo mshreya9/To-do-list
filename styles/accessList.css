@@ -65,9 +65,9 @@ input:hover, textarea:hover{
     border:2px solid transparent; 
     box-shadow:0 0 10px 0 rgba(0,0,0,.30); 
     border-radius:40px; 
-    width:100%"
+    width:100%;
 }
-.get-list-btn{
+.get-list-btn, .suggest-changes{
     width:auto;
     color:black;
     padding:5px 50px;
@@ -80,7 +80,6 @@ input:hover, textarea:hover{
 #input-email-collab {
     width : 100%
 }
-
 textarea{
     resize: none;
     height : 150px;
@@ -89,8 +88,7 @@ textarea{
     width : 100%;
     border-radius: 20px;
 }
-
-.status {
+.status{
     font-size: 18px;
     color : green;
     padding : 5px 8px;
