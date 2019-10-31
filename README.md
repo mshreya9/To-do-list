@@ -1,6 +1,6 @@
 # To-do-list
 
-This is the frontend of To-do-list project.
+This is the frontend of the To-do-list project.
 
 ### Objectives
 
