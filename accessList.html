@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Advanced to-do list">
@@ -21,7 +22,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow&display=swap"></noscript>
     <link rel="stylesheet" href="./styles/accessList.css">
 
-    <title>Access List</title>
+    <title>Keep Notes | Access List</title>
 </head>
 
 <body>
@@ -83,14 +84,13 @@
                             <h1>Access List</h1>
                         </div>
                     </div>
-                    <div class="col-3 col-lg-2"></div>
-                    <div class="col-6 col-lg-8" style="text-align: center;">
+                    <div class="col-1 col-lg-2"></div>
+                    <div class="col-10 col-lg-8" style="text-align: center;">
                         <input list="email-collab" id="input-email-collab">
-                        <datalist id="email-collab">
-                        </datalist>
-                        <input type="button" class="get-list-btn" value="Show List">
+                        <datalist id="email-collab"></datalist>
+                            <input type="button" class="get-list-btn" value="Show List">
                     </div>
-                    <div class="col-3 col-lg-8"></div>
+                    <div class="col-1 col-lg-2"></div>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
@@ -100,14 +100,14 @@
                             <h1>Suggest Changes?</h1>
                         </div>
                     </div>
-                    <div class="col-3 col-lg-2"></div>
-                    <div class="col-6 col-lg-8" style="text-align: center;">
-                        <textarea id="content"></textarea>
+                    <div class="col-1 col-lg-2"></div>
+                    <div class="col-10 col-lg-8" style="text-align: center;">
+                        <textarea placeholder="Suggest something!" id="content"></textarea>
                         <input type="button" class="suggest-changes" style="min-width : 200px" value="Suggest Changes">
                         <div class="status">
                         </div>
                     </div>
-                    <div class="col-3 col-lg-8"></div>
+                    <div class="col-1 col-lg-2"></div>
                 </div>
             </div>
 
@@ -148,7 +148,6 @@
             xmlhttp.send();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
-                    console.log(xmlhttp.responseText)
                     document.getElementById("name").innerHTML = JSON.parse(xmlhttp.responseText).name;
                 }
             };
@@ -161,8 +160,7 @@
             https.send();
             https.onreadystatechange = function () {
                 if (https.readyState == 4) {
-                    let arr = JSON.parse(https.responseText).list;
-                    console.log(JSON.parse(https.responseText).list)
+                    let arr = [...new Set(JSON.parse(https.responseText).list)];
                     for (i = 0; i < arr.length; i++) {
                         let option = document.createElement("option");
                         option.setAttribute("value", arr[i]);
@@ -182,7 +180,6 @@
                 http.send(JSON.stringify({ email }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText).list)
                         document.getElementById("task-list").innerHTML = "";
                         let arr = JSON.parse(http.responseText).list;
                         for (i = 0; i < arr.length; i++) {
@@ -206,11 +203,9 @@
                 http.open("POST", "https://keepnnote.herokuapp.com/share/user/reqchange");
                 http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 http.setRequestHeader("Authorization", localStorage.getItem("token"))
-                console.log({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value })
                 http.send(JSON.stringify({ "email": document.getElementById("input-email-collab").value, "content": document.getElementById("content").value }));
                 http.onreadystatechange = function () {
                     if (http.readyState == 4) {
-                        console.log(JSON.parse(http.responseText))
                         document.getElementsByClassName("status")[0].innerHTML = JSON.parse(http.responseText).message;
                         document.getElementsByClassName("status")[0].style.display = "block"
 
