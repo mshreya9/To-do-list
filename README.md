@@ -13,7 +13,7 @@ Some of the functions of this project:
 2. User login
   - [ ] Email
   - [ ] Password
-3. To-do-list
+3. To-do-list functionality
   - [ ] Add to the list
   - [ ] Delete in the list
  
