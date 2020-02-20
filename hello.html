@@ -1,14 +1,64 @@
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<div style="text-align: right;">
-Working on it no 5
+    <input id="name">
+    <input id="password">
+    <input id="phone">
+    <input id="regno">
+    <input id="email">
+    <input id="age">
+    <button id="submit">
 
+        <div id="status"></div>
 
+        <script>
+
+					window.onload = () => {
+						document.getElementById("submit").addEventListener("click", () => {
+                let name = document.getElementById("name").value;
+                let password = document.getElementById("password").value;
+                let regno = document.getElementById("regno").value;
+                let email = document.getElementById("email").value;
+                let age = document.getElementById("age").value;
+                let status = "";
+                let bool = true;
+                if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+                    status = status + "Email ";
+                    bool = false;
+                }
+                if(age < 18){
+                    status = status + "Age ";
+                    bool = false;
+                }
+                if(name.length <= 1){
+                    status = status + "Name ";
+                    bool = false;
+                }
+                if(!(	/^[a-zA-Z]\w{3,14}$/.test(password))){
+                    status = status + "Password ";
+                    bool = false;
+                }
+                if(!(/^(18BCB|18BCE|18BCI)[0-9]{4}$/.test(regno))){
+                    status = status + "Register no ";
+                    bool = false;
+                }
+                if(!(/^91-[0-9]{5}-[0-9]{5}$/.test(phone))){
+                    status = status + "Phone ";
+                    bool = false;
+                }
+                if(bool){
+                    document.getElementById("status").innerHTML = "Validated";
+                } else {
+                    document.getElementById("status").innerHTML = "The invalid feilds are " + status;
+                }
+            } )
+					}
+
+           
+        </script>
 </body>
 </html>
