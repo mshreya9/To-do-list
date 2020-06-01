@@ -28,8 +28,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white" id="shadow">
         <a class="navbar-brand" href="index.html">
-                <img src="./assets/navbar-logo.png" id="logo-top" alt="Keep Notes" style="width:60px">
-                Keep Notes
+            <img src="./assets/navbar-logo.png" id="logo-top" alt="Keep Notes" style="width:60px">
+            Keep Notes
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,8 +85,10 @@
                 </div>
                 <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
                     id="jot-down"></textarea>
+                <div class="speaker-icon" style="text-align: right; transform: translateY(-130%);">
+                    <img src="assets/microphone.png" style="height: 45px; width: 45px;">
+                </div>
                 <input class="add-list-btn" id="plus-btn" type="button" value="Add to list">
-
             </div>
             <div class="col-12 col-lg-6">
                 <img src="./assets/to-do-list.png" class="organizer-image">
@@ -143,7 +145,7 @@
                         let content = document.createTextNode(arr[i].trim());
                         span.appendChild(img);
                         div1.appendChild(content);
-                        div1.setAttribute("text",arr[i].trim() )
+                        div1.setAttribute("text", arr[i].trim())
                         div1.appendChild(span);
                         div.appendChild(div1);
                         span.firstElementChild.addEventListener('click', function (e) {
@@ -194,7 +196,7 @@
                             let content = document.createTextNode(text.value.trim());
                             span.appendChild(img);
                             div1.appendChild(content);
-                            div1.setAttribute("text",text.value.trim() )
+                            div1.setAttribute("text", text.value.trim())
                             div1.appendChild(span);
                             div.appendChild(div1);
                             document.getElementsByTagName("textarea")[0].value = "";
