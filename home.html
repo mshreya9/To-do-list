@@ -85,7 +85,7 @@
                 <textarea placeholder="Get your tasks done!" cols="10" rows="10" class="input-box"
                     id="jot-down"></textarea>
                 <div style="text-align: right; transform: translateY(-130%); cursor: pointer">
-                    <img src="assets/microphone.png" style="height: 45px; width: 45px;">
+                    <img src="assets/microphone.png" id="speaker-icon" style="height: 45px; width: 45px;">
                 </div>
                 <input class="add-list-btn" id="plus-btn" type="button" value="Add to list">
             </div>
@@ -219,6 +219,33 @@
                 window.location.href = "login.html";
             })
         }
+
+        //sppech recognition
+        document.getElementById('speaker-icon').addEventListener('click', () => {
+			if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+				var recognition = new webkitSpeechRecognition();
+
+				recognition.continuous = false;
+				recognition.interimResults = false;
+
+				recognition.lang = "en-US";
+				recognition.start();
+
+				recognition.onresult = function (e) {
+					document.getElementById('jot-down').value
+						= e.results[0][0].transcript;
+					recognition.stop();
+				};
+
+				recognition.onerror = function (e) {
+					recognition.stop();
+				}
+
+			} else {
+				console.log('Voice API not supported')
+			}
+		})
     </script>
 </body>
 
