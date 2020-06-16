@@ -2,20 +2,16 @@
 
 This is the frontend of the To-do-list project.
 
-### Objectives
+### [Check it out here](https://keepnotes.netlify.app/login.html)
 
-Some of the functions of this project:
+# Features
 
-1. User signup 
-  - [ ] Name 
-  - [ ] Email
-  - [ ] Password
-2. User login
-  - [ ] Email
-  - [ ] Password
-3. To-do-list functionality
-  - [ ] Add to the list
-  - [ ] Delete in the list
+1. The user can create public and private lists.
+2. Public lists, as the name suggests, can be shared with other users for collaboration.
+3. A user can access other users' lists by Access List option on the portal, by simply typing in the email of the other user.
+4. There is also a speak-and-add feature to ease the process of creating lists.
+5. The user can modify the access by adding user or deleting user.
+6. The user can suggest changes in the public list of another user.
  
  ### Backend
  
