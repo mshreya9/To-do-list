@@ -2,7 +2,7 @@
 
 This is the frontend of the To-do-list project.
 
-### [Check it out here](https://keepnotes.netlify.app/login.html)
+### [Check it out here!](https://keepnotes.netlify.app/login.html)
 
 # Features
 
